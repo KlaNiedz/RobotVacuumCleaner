@@ -24,28 +24,28 @@ Po sprz¹tniêciu ca³ego pokoju robot wraca do stacji ³aduj¹cej.
 6. Przeszkoda
 7. Po³o¿enie
 
-# 1.Robot (po³o¿enie, bateria, filtr, stan, czujniki)
+### 1.Robot (po³o¿enie, bateria, filtr, stan, czujniki)
 Klasa Robot odpowiada za poruszanie siê Benka (zawiera jego obecne po³o¿enie), monitoruje stan baterii i filtra. Jego ruch determinowany jest sygna³ami podawanymi przez czujniki.
 Atrybut stan zawiera informacje o tym czy robot jest w trybie pracy czy spoczynku.
 
-# 2.Czujnik 
+### 2.Czujnik 
 Jest to klasa odpowiedzialna za badanie otoczenia Benka i przesy³ania klasie Robot informacji. 
 W tej klasie zastosujemy dziedzczenie, za pomoc¹ którego zainnicujemy rózne rodzaje czujników, np. czujnik po bokach robota - potrzebny do omijania przeszkód; czujnik odleg³oœci - informuje jak daleko Benek mo¿e pojechaæ;
 
-# 3.Bateria (pojemnoœæ)
+### 3.Bateria (pojemnoœæ)
 W trakcie pracy robota atrybut tej klasy jest stale zmniejszany. Gdy osi¹gnie 10% robot przerywa pracê i wraca do stacji ³aduj¹cej. 
 
-# 4.Filtr (pojemnoœæ)
+### 4.Filtr (pojemnoœæ)
 Filtr dzia³a analogicznie do Baterii. Podczas pracy robota jego pojemnoœæ siê zmniejsza. Kiedy pojemnoœæ osi¹gnie stan 5%, robot wraca do stacji ³aduj¹cej, gdzie resetuje pojemnoœæ.
 Przez podobieñstwo do baterii rozwa¿ymy dziedziczenie.
 
-# 5.Mapa (d³ugoœæ, szerokoœæ, przeszkody, po³o¿enie_stacji)
+### 5.Mapa (d³ugoœæ, szerokoœæ, przeszkody, po³o¿enie_stacji)
 Zawiera informacje o wielkoœci terenu do sprz¹tania i po³o¿enia wszystkich przeszkód oraz stacji ³aduj¹cej. Stacja ³aduj¹ca jest obiektem klasy Po³o¿enie.
 
-# 6.Przeszkoda (po³o¿enie, szerokoœæ, d³ugoœæ)
+### 6.Przeszkoda (po³o¿enie, szerokoœæ, d³ugoœæ)
 Jest to klasa przechowuj¹ca po³o¿enie przeszkody oraz ile zajmuje miejsca na mapie.
 
-# 7.Po³o¿enie (x, y)
+### 7.Po³o¿enie (x, y)
 Klasa zawieraj¹ca 2 atrybuty informuj¹ce o po³o¿eniu danego obiektu. Z tej klasy korzysta wiele innych klas np. robot, przeszkoda. 
 
 ## Podzia³ obowi¹zków
