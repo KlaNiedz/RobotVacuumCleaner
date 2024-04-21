@@ -1,93 +1,63 @@
 # 104.1 Robot sprzatajacy
 
 
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab-stud.elka.pw.edu.pl/proi.24l-projekty/104.1-robot-sprzatajacy.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab-stud.elka.pw.edu.pl/proi.24l-projekty/104.1-robot-sprzatajacy/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
 ***
 
-# Editing this README
+## Temat
+Robot sprz¹taj¹cy "Benek"
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Cel projektu
+Naszym celem projektu jest stworzenie robota sprz¹taj¹cego, który posiada sterowanie autonomiczne oraz rêczne. Jego zadaniem jest sprz¹tniêcie ca³ego pomieszczenia i ominiêcie przeszkód.
+Po zakoñczeniu sprz¹tania lub wy³adowaniu baterii "Benek" wraca do stacji ³aduj¹cej. 
 
-## Suggestions for a good README
+## Dzia³anie robota
+Robot ma funckjê odkurzania. Dziêki czujnikom robot omija przeszkody i optymalnie przemieszcza siê po pomieszczeniu. W razie wykrcia przeszkody, robot j¹ omija i kontynuuje swoj¹ pracê.
+W momencie wyczerpania baterii lub przepe³nienia filtra "Benek" wraca na stacjê ³aduj¹c¹, ³aduje siê/opró¿nia filtr i kontynuuje pracê od miejsca w którym j¹ przerwa³.
+Po sprz¹tniêciu ca³ego pokoju robot wraca do stacji ³aduj¹cej.
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## Podzia³ klas
+1. Robot
+2. Czujnik 
+3. Bateria
+4. Filtr
+5. Mapa
+6. Przeszkoda
+7. Po³o¿enie
 
-## Name
-Choose a self-explaining name for your project.
+# 1.Robot (po³o¿enie, bateria, filtr, stan, czujniki)
+Klasa Robot odpowiada za poruszanie siê Benka (zawiera jego obecne po³o¿enie), monitoruje stan baterii i filtra. Jego ruch determinowany jest sygna³ami podawanymi przez czujniki.
+Atrybut stan zawiera informacje o tym czy robot jest w trybie pracy czy spoczynku.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+# 2.Czujnik 
+Jest to klasa odpowiedzialna za badanie otoczenia Benka i przesy³ania klasie Robot informacji. 
+W tej klasie zastosujemy dziedzczenie, za pomoc¹ którego zainnicujemy rózne rodzaje czujników, np. czujnik po bokach robota - potrzebny do omijania przeszkód; czujnik odleg³oœci - informuje jak daleko Benek mo¿e pojechaæ;
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+# 3.Bateria (pojemnoœæ)
+W trakcie pracy robota atrybut tej klasy jest stale zmniejszany. Gdy osi¹gnie 10% robot przerywa pracê i wraca do stacji ³aduj¹cej. 
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+# 4.Filtr (pojemnoœæ)
+Filtr dzia³a analogicznie do Baterii. Podczas pracy robota jego pojemnoœæ siê zmniejsza. Kiedy pojemnoœæ osi¹gnie stan 5%, robot wraca do stacji ³aduj¹cej, gdzie resetuje pojemnoœæ.
+Przez podobieñstwo do baterii rozwa¿ymy dziedziczenie.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+# 5.Mapa (d³ugoœæ, szerokoœæ, przeszkody, po³o¿enie_stacji)
+Zawiera informacje o wielkoœci terenu do sprz¹tania i po³o¿enia wszystkich przeszkód oraz stacji ³aduj¹cej. Stacja ³aduj¹ca jest obiektem klasy Po³o¿enie.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+# 6.Przeszkoda (po³o¿enie, szerokoœæ, d³ugoœæ)
+Jest to klasa przechowuj¹ca po³o¿enie przeszkody oraz ile zajmuje miejsca na mapie.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+# 7.Po³o¿enie (x, y)
+Klasa zawieraj¹ca 2 atrybuty informuj¹ce o po³o¿eniu danego obiektu. Z tej klasy korzysta wiele innych klas np. robot, przeszkoda. 
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Podzia³ obowi¹zków
+Piotr - Czujnik
+Klaudia - Mapa
+Julia -  Przeszkoda, Po³o¿enie, Filtr, Bateria
+Robot - razem
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Docelowe dzia³anie programu
+Na pocz¹tku skupimy siê na poprawnej implmentacji funkcji oraz komunikacji miêdzy klasami. W pocz¹tkowych fazach pracy zajmiemy siê sterowanym rêcznie ruchem robota oraz wykrywaniem przeszkód.
+Natomiast docelowym za³o¿eniem jest wyœwietlanie siê mapy trasy robota, który ma równie¿ tryb automatyczny.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Autorzy
+Klaudia Niedzia³kowska, Julia Kie³bik, Piotr Koz³owski
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
