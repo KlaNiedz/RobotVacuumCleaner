@@ -34,6 +34,21 @@ Map::~Map()
 	delete[] MapArray;
 }
 
+int Map::getWidth()
+{
+	return Width;
+}
+
+int Map::getHegiht()
+{
+	return Height;
+}
+
+int Map::getXY(int x_cor, int y_cor)
+{
+	return MapArray[x_cor][y_cor];
+}
+
 void Map::showMap()
 {
 	for (int y = 0; y < Height; y++) {
