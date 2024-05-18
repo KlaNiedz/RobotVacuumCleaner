@@ -36,7 +36,7 @@ W tej klasie zastosujemy dziedzczenie, za pomoc¹ którego zainnicujemy rózne rodz
 W trakcie pracy robota atrybut tej klasy jest stale zmniejszany. Gdy osi¹gnie 10% robot przerywa pracê i wraca do stacji ³aduj¹cej. 
 
 ### 4.Filtr (pojemnoœæ)
-Filtr dzia³a analogicznie do Baterii. Podczas pracy robota jego pojemnoœæ siê zmniejsza. Kiedy pojemnoœæ osi¹gnie stan 5%, robot wraca do stacji ³aduj¹cej, gdzie resetuje pojemnoœæ.
+Filtr dzia³a analogicznie do Baterii. Podczas pracy robota jego zape³nieie siê zwiêksza. Kiedy zape³nienie osi¹gnie stan 95%, robot wraca do stacji ³aduj¹cej, gdzie resetuje pojemnoœæ.
 Przez podobieñstwo do baterii rozwa¿ymy dziedziczenie.
 
 ### 5.Mapa (d³ugoœæ, szerokoœæ, przeszkody, po³o¿enie_stacji)
