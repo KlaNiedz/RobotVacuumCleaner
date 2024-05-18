@@ -4,7 +4,7 @@
 class Sensor {
 	///		Bazowa klasa Sensor ma stale pobieraæ po³o¿enie (x, y) oraz zwrot robota (z osobnej klasy "modu³ GPS"???).
 	/// 	Na podstawie po³o¿enia i zwrotu:
-	///			1) ForwardSensor 
+	///			1) FrontSensor 
 	///				- bedzie wiedzia³, czy w jego zasiêgu znajduje sie przeszkoda,
 	///				- bedzie oblicza³ odleg³oœæ do w.w. przeszkody,
 	///				- w razie minimalnej odleg³oœci wyœle do robota sygna³ STOP,
