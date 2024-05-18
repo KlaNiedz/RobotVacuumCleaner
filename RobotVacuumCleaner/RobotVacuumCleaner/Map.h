@@ -11,10 +11,10 @@ private:
 public:
 	Map(int height, int width);
 	~Map();
-	int getXY(int x_cor, int y_cor);
+	int getXY(int y_cor, int x_cor);
 	int getHeight();
 	int getWidth();
-	void setXY(int x_cor, int y_cor, int repr);
+	void setXY(int y_cor, int x_cor, int repr);
 	void setHeightandWidth(int width, int height);
 	void showMap();
 };

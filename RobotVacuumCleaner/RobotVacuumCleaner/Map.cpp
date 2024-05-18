@@ -34,9 +34,9 @@ Map::~Map()
 	delete[] MapArray;
 }
 
-int Map::getXY(int x_cor, int y_cor)
+int Map::getXY(int y_cor, int x_cor)
 {
-	return MapArray[x_cor][y_cor];
+	return MapArray[y_cor][x_cor];
 }
 
 int Map::getHeight()
@@ -49,9 +49,9 @@ int Map::getWidth()
 	return Width;
 }
 
-void Map::setXY(int x_cor, int y_cor, int repr)
+void Map::setXY(int y_cor, int x_cor, int repr)
 {
-	MapArray[x_cor][y_cor] = repr;
+	MapArray[y_cor][x_cor] = repr;
 }
 
 void Map::setHeightandWidth(int width, int height)
