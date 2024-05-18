@@ -12,6 +12,8 @@ public:
 	Map(int height, int width);
 	~Map();
 	int getXY(int x_cor, int y_cor);
+	int getHeight();
+	int getWidth();
 	void showMap();
 };
 

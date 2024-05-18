@@ -39,6 +39,16 @@ int Map::getXY(int x_cor, int y_cor)
 	return MapArray[x_cor][y_cor];
 }
 
+int Map::getHeight()
+{
+	return Height;
+}
+
+int Map::getWidth()
+{
+	return Width;
+}
+
 void Map::showMap()
 {
 	for (int y = 0; y < Height; y++) {
