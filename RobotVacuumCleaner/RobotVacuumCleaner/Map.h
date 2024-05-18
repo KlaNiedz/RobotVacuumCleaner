@@ -11,6 +11,7 @@ private:
 public:
 	Map(int height, int width);
 	~Map();
+	int getXY(int x_cor, int y_cor);
 	void showMap();
 };
 
