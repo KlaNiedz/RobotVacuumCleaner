@@ -49,6 +49,31 @@ int Map::getWidth()
 	return Width;
 }
 
+void Map::setXY(int x_cor, int y_cor, int repr)
+{
+	MapArray[x_cor][y_cor] = repr;
+}
+
+void Map::setHeightandWidth(int width, int height)
+{
+	Height = static_cast<int>(round(height / 20.0));
+	Width = static_cast<int>(round(width / 20.0));
+	MapArray = new int* [Height];
+	for (int i = 0; i < Height; i++)
+	{
+		MapArray[i] = new int[Width];
+	}
+
+	// creating an empty map
+	for (int y = 0; y < Height; y++)
+	{
+		for (int x = 0; x < Width; x++)
+		{
+			MapArray[y][x] = 0;
+		}
+	}
+}
+
 void Map::showMap()
 {
 	for (int y = 0; y < Height; y++) {
