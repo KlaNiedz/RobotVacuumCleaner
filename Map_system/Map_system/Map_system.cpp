@@ -6,8 +6,7 @@
 
 int main()
 {
-    ChargingStation char_stat(40, 40);
-    Map map1(208, 200, char_stat);
+    Map map1(208, 200);
     map1.showMap();
     
 }

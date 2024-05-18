@@ -1,12 +1,11 @@
 #include "Map.h"
 
-Map::Map(int height, int width, ChargingStation char_stat)
+Map::Map(int height, int width)
 {
-	// jedna kratka reprezentuje kwadrat 20x20
-	// height oraz width wyra¿one w cm
+	// one square is 20x20 cm
+	// height and width are represented in cm
 	Height = static_cast<int>(round(height/20.0));
 	Width = static_cast<int>(round(width/20.0));
-	Char_stat = char_stat;
 
 
 	MapArray = new int*[Height];
@@ -15,7 +14,7 @@ Map::Map(int height, int width, ChargingStation char_stat)
 		MapArray[i] = new int[Width];
 	}
 
-	// tworzenie pustej mapy
+	// creating an empty map
 	for (int y = 0; y < Height; y++)
 	{
 		for (int x = 0; x < Width; x++)
@@ -23,8 +22,6 @@ Map::Map(int height, int width, ChargingStation char_stat)
 			MapArray[y][x] = 0;
 		}
 	}
-	MapArray[static_cast<int>(round(Char_stat.getY()/20.0))][static_cast<int>(round(Char_stat.getX()/20.0))] = 5;
-	
 
 }
 
