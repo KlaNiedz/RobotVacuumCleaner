@@ -1,4 +1,6 @@
 #pragma once
+#include "Direction.h"
+
 class Sensor {
 	///		Bazowa klasa Sensor ma stale pobieraæ po³o¿enie (x, y) oraz zwrot robota (z osobnej klasy "modu³ GPS"???).
 	/// 	Na podstawie po³o¿enia i zwrotu:
@@ -38,11 +40,4 @@ public:
 	virtual int get_dist_to_obstacle() const = 0;
 
 	virtual bool obstacle_in_range() const = 0;
-};
-
-enum class Direction {
-	North,
-	East,
-	South,
-	West
 };
