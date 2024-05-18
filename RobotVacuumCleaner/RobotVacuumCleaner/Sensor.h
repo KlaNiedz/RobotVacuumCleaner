@@ -1,5 +1,6 @@
 #pragma once
 #include "Direction.h"
+#include "Map.h"
 
 class Sensor {
 	///		Bazowa klasa Sensor ma stale pobieraæ po³o¿enie (x, y) oraz zwrot robota (z osobnej klasy "modu³ GPS"???).
@@ -16,9 +17,10 @@ class Sensor {
 private:
 	int x_coord, y_coord, range;
 	Direction heading;
+	Map map;
 public:
 	//Constructor
-	Sensor(int x, int y, Direction h, int r);
+	Sensor(int x, int y, Direction h, int r, Map m);
 
 	//Virtual deconstructor
 	virtual ~Sensor() {};
@@ -28,12 +30,14 @@ public:
 	int get_y() const;
 	int get_range() const;
 	Direction get_heading() const;
+	Map get_map() const;
 
 	//Setters
 	void set_x(int);
 	void set_y(int);
 	void set_range(int);
 	void set_heading(Direction);
+	void set_map(Map);
 
 	bool update_position(int, int, Direction);
 
