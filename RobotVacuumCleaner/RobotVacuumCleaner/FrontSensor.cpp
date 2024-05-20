@@ -66,3 +66,51 @@ bool FrontSensor::obstacle_in_range() const {
 		break;
 	}
 }
+
+int FrontSensor::get_dist_to_stop() const {
+	if (obstacle_in_range()) {
+		int distance = 0;
+		switch (get_heading())
+		{
+		case Direction::North:			
+			for (int i = 1; i <= get_range(); i++) {
+				if (get_map().getXY(get_y() - i, get_x()) != 3) {
+					distance += 1;
+				}
+				else return distance;
+			}
+			break;
+		case Direction::East:
+			for (int i = 1; i <= get_range(); i++) {
+				if (get_map().getXY(get_y(), get_x() + i) != 3) {
+					distance += 1;
+				}
+				else return distance;
+			}
+			break;
+		case Direction::South:
+			
+			for (int i = 1; i <= get_range(); i++) {
+				if (get_map().getXY(get_y() + i, get_x()) != 3) {
+					distance += 1;
+				}
+				else return distance;
+			}
+			break;
+		case Direction::West:
+			
+			for (int i = 1; i <= get_range(); i++) {
+				if (get_map().getXY(get_y(), get_x() - i) != 3) {
+					distance += 1;
+				}
+				else return distance;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	else {
+		return get_range();
+	}
+}

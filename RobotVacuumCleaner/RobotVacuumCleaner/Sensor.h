@@ -41,7 +41,7 @@ public:
 
 	bool update_position(int, int, Direction);
 
-	virtual int get_dist_to_obstacle() const = 0;
+	virtual int get_dist_to_stop() const = 0;
 
 	virtual bool obstacle_in_range() const = 0;
 };
