@@ -5,7 +5,7 @@
 
 class ChargingStation : public MapObject {
 public:
-    ChargingStation(float x, float y, IDType ID);
+    ChargingStation(int x, int y, IDType ID);
 
     void displayInfo() const override;
 };

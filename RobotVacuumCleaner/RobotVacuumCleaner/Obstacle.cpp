@@ -1,29 +1,29 @@
 #include "Obstacle.h"
 #include <iostream>
 
-Obstacle::Obstacle(float x, float y, IDType ID, float width, float length)
+Obstacle::Obstacle(int x, int y, IDType ID, int width, int length)
     : MapObject(x, y, ID)
 {
     setLength(length);
     setWidth(width);
 }
 
-float Obstacle::getWidth() const {
+int Obstacle::getWidth() const {
     return width;
 }
 
-float Obstacle::getLength() const {
+int Obstacle::getLength() const {
     return length;
 }
 
-void Obstacle::setWidth(float newWidth) {
+void Obstacle::setWidth(int newWidth) {
     if (newWidth <= 0) {
         throw std::invalid_argument("Width must be a positive value.");
     }
     width = newWidth;
 }
 
-void Obstacle::setLength(float newLength) {
+void Obstacle::setLength(int newLength) {
     if (newLength <= 0) {
         throw std::invalid_argument("Length must be a positive value.");
     }

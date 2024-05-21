@@ -1,6 +1,6 @@
 #include "MapObject.h"
 
-MapObject::MapObject(float x, float y, IDType ID)
+MapObject::MapObject(int x, int y, IDType ID)
 {
     setX(x);
     setY(y);
@@ -9,11 +9,11 @@ MapObject::MapObject(float x, float y, IDType ID)
 
 MapObject::~MapObject() {}
 
-float MapObject::getX() const {
+int MapObject::getX() const {
     return x;
 }
 
-float MapObject::getY() const {
+int MapObject::getY() const {
     return y;
 }
 
@@ -21,11 +21,11 @@ IDType MapObject::getID() const {
     return ID;
 }
 
-void MapObject::setX(float newX) {
+void MapObject::setX(int newX) {
     x = newX;
 }
 
-void MapObject::setY(float newY) {
+void MapObject::setY(int newY) {
     y = newY;
 }
 

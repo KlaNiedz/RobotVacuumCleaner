@@ -6,17 +6,17 @@
 
 class Obstacle : public MapObject {
 private:
-    float width;
-    float length;
+    int width;
+    int length;
 
 public:
-    Obstacle(float x, float y, IDType ID, float width, float length);
+    Obstacle(int x, int y, IDType ID, int width, int length);
 
-    float getWidth() const;
-    float getLength() const;
+    int getWidth() const;
+    int getLength() const;
 
-    void setWidth(float newWidth);
-    void setLength(float newLength);
+    void setWidth(int newWidth);
+    void setLength(int newLength);
 
     void displayInfo() const override;
 };

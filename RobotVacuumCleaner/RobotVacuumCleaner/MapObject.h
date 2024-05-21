@@ -5,23 +5,23 @@
 
 class MapObject {
 protected:
-    float x;
-    float y;
+    int x;
+    int y;
     IDType ID;
 
 public:
-    MapObject(float x, float y, IDType ID);
+    MapObject(int x, int y, IDType ID);
 
     virtual ~MapObject();
 
     virtual void displayInfo() const = 0;
 
-    float getX() const;
-    float getY() const;
+    int getX() const;
+    int getY() const;
     IDType getID() const;
 
-    void setX(float newX);
-    void setY(float newY);
+    void setX(int newX);
+    void setY(int newY);
     void setID(IDType newID);
 };
 

@@ -22,6 +22,7 @@ Map::Map(int height, int width)
 			MapArray[y][x] = 0;
 		}
 	}
+	generateObstacles();
 
 }
 
@@ -51,11 +52,18 @@ int Map::getWidth()
 
 void Map::setXY(int y_cor, int x_cor, int repr)
 {
+	if (y_cor < 0 || y_cor >= Height || x_cor < 0 || x_cor >= Width)
+		throw std::out_of_range("Coordinates out of bounds");
 	MapArray[y_cor][x_cor] = repr;
 }
 
 void Map::setHeightandWidth(int width, int height)
 {
+	for (int i = 0; i < Height; i++)
+	{
+		delete[] MapArray[i];
+	}
+	delete[] MapArray;
 	Height = static_cast<int>(round(height / 20.0));
 	Width = static_cast<int>(round(width / 20.0));
 	MapArray = new int* [Height];
@@ -81,5 +89,30 @@ void Map::showMap()
 			std::cout << MapArray[y][x] << " ";
 		}
 		std::cout << std::endl;
+	}
+}
+
+void Map::generateObstacles()
+{
+	int num_obs = Height*Width/10;
+	for (int i = 0; i < num_obs; i++)
+	{
+		int rand_height = 1 + (std::rand() % (Height/2));
+		int rand_width = 1 + (std::rand() % (Width/2));
+		int rand_x = 0 + (std::rand() % Width);
+		int rand_y = 0 + (std::rand() % Height);
+
+
+		Obstacles.push_back(Obstacle(rand_x, rand_y, IDType::Obstacle, rand_width, rand_height));
+	}
+	for (int obs = 0; obs < Obstacles.size(); obs++)
+	{
+		int x = Obstacles[obs].getX();
+		int y = Obstacles[obs].getY();
+		if (x < 0 || x >= Width || y < 0 || y >= Height){
+			std::cout << "dupa" << x << y << std::endl;
+			continue; // Ensure obstacles are within bounds
+		}
+		MapArray[y][x] = static_cast<int>(Obstacles[obs].getID());
 	}
 }
