@@ -3,7 +3,7 @@
 
 class FrontSensor : public Sensor {
 public:
-	FrontSensor(int x, int y, Direction h, int r, Map map);
+	FrontSensor(Map map, int x, int y, Direction h, int r);
 
 	int get_dist_to_stop() const override;
 

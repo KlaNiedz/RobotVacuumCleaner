@@ -1,3 +1,3 @@
 #include "SideSensor.h"
 
-SideSensor::SideSensor(int x, int y, Direction h, int r, Map m) : Sensor(x, y, h, r, m) {}
+SideSensor::SideSensor(Map m, int x, int y, Direction h, int r = 1) : Sensor(m, x, y, h, r) {}

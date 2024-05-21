@@ -1,6 +1,6 @@
 #include "LeftSideSensor.h"
 
-LeftSideSensor::LeftSideSensor(int x, int y, Direction h, int r, Map m) : SideSensor(x, y, h, r, m) {}
+LeftSideSensor::LeftSideSensor(Map m, int x, int y, Direction h, int r) : SideSensor(m, x, y, h, r) {}
 
 bool LeftSideSensor::obstacle_in_range() const {
 	int range;

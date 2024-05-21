@@ -1,6 +1,6 @@
 #include "FrontSensor.h"
 
-FrontSensor::FrontSensor(int x, int y, Direction h, int r, Map m) : Sensor(x, y, h, r, m) {}
+FrontSensor::FrontSensor(Map m, int x, int y, Direction h, int r = 3) : Sensor(m, x, y, h, r) {}
 
 bool FrontSensor::obstacle_in_range() const {
 	int range;
