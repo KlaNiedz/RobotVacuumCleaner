@@ -114,3 +114,35 @@ int FrontSensor::get_dist_to_stop() const {
 		return get_range();
 	}
 }
+
+bool FrontSensor::wall_detected() const {
+	switch (get_heading())
+	{
+	case Direction::North:
+		if (get_y()==0) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::East:
+		if (get_x() == get_map().getWidth()) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::South:
+		if (get_y() == get_map().getHeight()) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::West:
+		if (get_x() == 0) {
+			return true;
+		}
+		return false;
+		break;
+	default:
+		break;
+	}
+}

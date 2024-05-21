@@ -66,3 +66,35 @@ bool LeftSideSensor::obstacle_in_range() const {
 		break;
 	}
 }
+
+bool LeftSideSensor::wall_detected() const {
+	switch (get_heading())
+	{
+	case Direction::East:
+		if (get_y() == 0) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::South:
+		if (get_x() == get_map().getWidth()) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::West:
+		if (get_y() == get_map().getHeight()) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::North:
+		if (get_x() == 0) {
+			return true;
+		}
+		return false;
+		break;
+	default:
+		break;
+	}
+}
