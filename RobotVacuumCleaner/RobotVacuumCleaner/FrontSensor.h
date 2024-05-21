@@ -8,4 +8,5 @@ public:
 	int get_dist_to_stop() const override;
 
 	bool obstacle_in_range() const override;
+	bool wall_detected() const override;
 };

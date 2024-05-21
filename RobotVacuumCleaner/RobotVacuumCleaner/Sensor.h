@@ -44,4 +44,6 @@ public:
 	virtual int get_dist_to_stop() const = 0;
 
 	virtual bool obstacle_in_range() const = 0;
+
+	virtual bool wall_detected() const = 0;
 };

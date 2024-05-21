@@ -1,12 +1,12 @@
-#include "FrontSensor.h"
+#include "RightSideSensor.h"
 
-FrontSensor::FrontSensor(int x, int y, Direction h, int r, Map m) : Sensor(x, y, h, r, m) {}
+RightSideSensor::RightSideSensor(int x, int y, Direction h, int r, Map m) : SideSensor(x, y, h, r, m) {}
 
-bool FrontSensor::obstacle_in_range() const {
+bool RightSideSensor::obstacle_in_range() const {
 	int range;
 	switch (get_heading())
 	{
-	case Direction::North :
+	case Direction::West :
 		if (get_y() - get_range() < 0) {
 			range = get_y();
 		}
@@ -20,7 +20,7 @@ bool FrontSensor::obstacle_in_range() const {
 		}
 		return false;
 		break;
-	case Direction::East :
+	case Direction::North :
 		if (get_x() + get_range() > get_map().getWidth()) {
 			range = get_map().getWidth() - get_x();
 		}
@@ -34,7 +34,7 @@ bool FrontSensor::obstacle_in_range() const {
 		}
 		return false;
 		break;
-	case Direction::South :
+	case Direction::East :
 		if (get_y() + get_range() > get_map().getHeight()) {
 			range = get_map().getHeight() - get_y();
 		}
@@ -48,7 +48,7 @@ bool FrontSensor::obstacle_in_range() const {
 		}
 		return false;
 		break;
-	case Direction::West :
+	case Direction::South :
 		if (get_x() - get_range() < 0) {
 			range = get_x();
 		}
@@ -66,77 +66,28 @@ bool FrontSensor::obstacle_in_range() const {
 		break;
 	}
 }
-
-int FrontSensor::get_dist_to_stop() const {
-	if (obstacle_in_range()) {
-		int distance = 0;
-		switch (get_heading())
-		{
-		case Direction::North:			
-			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y() - i, get_x()) != 3) {
-					distance += 1;
-				}
-				else return distance;
-			}
-			break;
-		case Direction::East:
-			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y(), get_x() + i) != 3) {
-					distance += 1;
-				}
-				else return distance;
-			}
-			break;
-		case Direction::South:
-			
-			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y() + i, get_x()) != 3) {
-					distance += 1;
-				}
-				else return distance;
-			}
-			break;
-		case Direction::West:
-			
-			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y(), get_x() - i) != 3) {
-					distance += 1;
-				}
-				else return distance;
-			}
-			break;
-		default:
-			break;
-		}
-	}
-	else {
-		return get_range();
-	}
-}
-
-bool FrontSensor::wall_detected() const {
+bool RightSideSensor::wall_detected() const {
 	switch (get_heading())
 	{
-	case Direction::North:
-		if (get_y()==0) {
+	case Direction::West:
+		if (get_y() == 0) {
 			return true;
 		}
 		return false;
 		break;
-	case Direction::East:
+	case Direction::North:
 		if (get_x() == get_map().getWidth()) {
 			return true;
 		}
 		return false;
 		break;
-	case Direction::South:
+	case Direction::East:
 		if (get_y() == get_map().getHeight()) {
 			return true;
 		}
 		return false;
 		break;
-	case Direction::West:
+	case Direction::South:
 		if (get_x() == 0) {
 			return true;
 		}
