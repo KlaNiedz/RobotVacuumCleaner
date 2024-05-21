@@ -46,4 +46,6 @@ public:
 	virtual bool obstacle_in_range() const = 0;
 
 	virtual bool wall_detected() const = 0;
+
+	virtual bool dirt_detected() const = 0;
 };

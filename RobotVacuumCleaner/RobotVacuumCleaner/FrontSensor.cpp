@@ -146,3 +146,35 @@ bool FrontSensor::wall_detected() const {
 		break;
 	}
 }
+
+bool FrontSensor::dirt_detected() const {
+	switch (get_heading())
+	{
+	case Direction::North:
+		if (get_map().getXY(get_y()-1,get_x()) == 0) {// 0 - dirt, 1 - clean
+			return true;
+		}
+		return false;
+		break;
+	case Direction::East:
+		if (get_map().getXY(get_y(), get_x()+1) == 0) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::South:
+		if (get_map().getXY(get_y() + 1, get_x()) == 0) {
+			return true;
+		}
+		return false;
+		break;
+	case Direction::West:
+		if (get_map().getXY(get_y(), get_x()-1) == 0) {
+			return true;
+		}
+		return false;
+		break;
+	default:
+		break;
+	}
+}

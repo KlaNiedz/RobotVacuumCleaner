@@ -8,4 +8,5 @@ public:
 
 	bool obstacle_in_range() const override;
 	bool wall_detected() const override;
+	bool dirt_detected() const override;
 };
