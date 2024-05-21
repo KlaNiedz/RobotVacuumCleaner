@@ -128,14 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FrontSensor.cpp" />
+    <ClCompile Include="LeftSideSensor.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="RightSideSensor.cpp" />
     <ClCompile Include="RobotVacuumCleaner.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="SideSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrontSensor.h" />
+    <ClInclude Include="LeftSideSensor.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="RightSideSensor.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="SideSensor.h" />
   </ItemGroup>

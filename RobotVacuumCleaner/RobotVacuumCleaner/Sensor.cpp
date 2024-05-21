@@ -1,12 +1,7 @@
 #include "Sensor.h"
 
-Sensor::Sensor(int x, int y, Direction h, int r, Map m) {
-	x_coord = x;
-	y_coord = y;
-	heading = h;
-	range = r;
-	map = m;
-}
+Sensor::Sensor(int x, int y, Direction h, int r, Map m) :
+	x_coord(x), y_coord(y), heading(h), range(r), map(m) {}
 
 int Sensor::get_x() const {
 	return x_coord;
