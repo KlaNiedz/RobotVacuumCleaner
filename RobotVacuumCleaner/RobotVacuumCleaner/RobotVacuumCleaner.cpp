@@ -2,10 +2,13 @@
 //
 
 #include <iostream>
+#include "Map.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Map map1(303, 250);
+	map1.showMap();
+	
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania

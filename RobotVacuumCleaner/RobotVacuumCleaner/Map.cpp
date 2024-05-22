@@ -1,4 +1,7 @@
+#include <cstdlib>
+#include <ctime>
 #include "Map.h"
+#include "ChargingStation.h"
 
 Map::Map(int height, int width)
 {
@@ -8,10 +11,10 @@ Map::Map(int height, int width)
 	Width = static_cast<int>(round(width/20.0));
 
 
-	MapArray = new IDType*[Height];
+	MapArray = new int*[Height];
 	for (int i = 0; i < Height; i++)
 	{
-		MapArray[i] = new IDType[Width];
+		MapArray[i] = new int[Width];
 	}
 
 	// creating an empty map
@@ -19,11 +22,14 @@ Map::Map(int height, int width)
 	{
 		for (int x = 0; x < Width; x++)
 		{
-			MapArray[y][x] = IDType::Dirty;
+			MapArray[y][x] = 0;
 		}
 	}
-	//generateObstacles();
-
+	generateObstacles();
+	// putting Charging Station into map
+	ChargingStation charstat(Width-1, 0, IDType::ChargingStation);
+	MapArray[charstat.getY()][charstat.getX()] = static_cast<int>(charstat.getID());
+	
 }
 
 Map::~Map()
@@ -35,22 +41,22 @@ Map::~Map()
 	delete[] MapArray;
 }
 
-IDType Map::getXY(int y_cor, int x_cor)
+int Map::getXY(int y_cor, int x_cor) const
 {
 	return MapArray[y_cor][x_cor];
 }
 
-int Map::getHeight()
+int Map::getHeight() const
 {
 	return Height;
 }
 
-int Map::getWidth()
+int Map::getWidth() const
 {
 	return Width;
 }
 
-void Map::setXY(int y_cor, int x_cor, IDType repr)
+void Map::setXY(int y_cor, int x_cor, int repr)
 {
 	if (y_cor < 0 || y_cor >= Height || x_cor < 0 || x_cor >= Width)
 		throw std::out_of_range("Coordinates out of bounds");
@@ -66,10 +72,10 @@ void Map::setHeightandWidth(int width, int height)
 	delete[] MapArray;
 	Height = static_cast<int>(round(height / 20.0));
 	Width = static_cast<int>(round(width / 20.0));
-	MapArray = new IDType* [Height];
+	MapArray = new int* [Height];
 	for (int i = 0; i < Height; i++)
 	{
-		MapArray[i] = new IDType[Width];
+		MapArray[i] = new int[Width];
 	}
 
 	// creating an empty map
@@ -77,7 +83,7 @@ void Map::setHeightandWidth(int width, int height)
 	{
 		for (int x = 0; x < Width; x++)
 		{
-			MapArray[y][x] = IDType::Dirty;
+			MapArray[y][x] = 0;
 		}
 	}
 }
@@ -92,60 +98,82 @@ void Map::showMap()
 	}
 }
 
-//void Map::generateObstacles()
-//{
-//	int num_obs = Height*Width/10;
-//	std::vector<std::vector<bool>> occupied(Height, std::vector<bool>(Width, false));
-//	for (int i = 0; i < num_obs; i++)
-//	{
-//		int rand_height = 1 + (std::rand() % (Height/4));
-//		int rand_width = 1 + (std::rand() % (Width/4));
-//		int rand_x = 0;
-//		int rand_y = 0;
-//		bool valid_position = false;
-//
-//
-//		while (!valid_position)
-//		{
-//			int rand_x = std::rand() % Width;
-//			int rand_y = std::rand() % Height;
-//			valid_position = true;
-//			for (int l = 0; l < rand_height && valid_position; l++)
-//			{
-//				for (int w = 0; w < rand_width && valid_position; w++)
-//				{
-//					int new_x = rand_x + w;
-//					int new_y = rand_y + l;
-//
-//					if (new_x >= Width || new_y >= Height || occupied[new_y][new_x])
-//					{
-//						valid_position = false;
-//					}
-//				}
-//			}
-//		}
-//
-//		Obstacles.push_back(Obstacle(rand_x, rand_y, IDType::Obstacle, rand_width, rand_height));
-//		for (int l = 0; l < rand_height; l++)
-//		{
-//			for (int w = 0; w < rand_width; w++)
-//			{
-//				occupied[rand_y + l][rand_x + w] = true;
-//			}
-//		}
-//	}
-//	for (int obs = 0; obs < Obstacles.size(); obs++)
-//	{
-//		int x = Obstacles[obs].getX();
-//		int y = Obstacles[obs].getY();
-//		
-//		/*MapArray[y][x] = static_cast<int>(Obstacles[obs].getID());*/
-//		for (int l = 0; l < Obstacles[obs].getLength(); l++)
-//		{
-//			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
-//			{
-//				MapArray[y + l][x + w] = static_cast<int>(Obstacles[obs].getID());
-//			}
-//		}
-//	}
-//}
+// Randomly gererating obstacles on map. 
+void Map::generateObstacles()
+{
+	std::srand(std::time(nullptr));
+	int num_obs = Height*Width/15;
+	std::vector<std::vector<bool>> occupied(Height, std::vector<bool>(Width, false));
+	occupied[CharStat.getY()][CharStat.getX()] = true;
+
+	for (int i = 0; i < num_obs; i++)
+	{
+		int rand_height = 1 + (std::rand() % 3);
+		int rand_width = 1 + (std::rand() % 3);
+		int rand_x = 0;
+		int rand_y = 0;
+		bool valid_position = false;
+
+		// generating obstacle till all squares prepared for obstacles are found empty
+		while (!valid_position)
+		{
+			rand_x = 1 + (std::rand() % (Width-1));
+			rand_y = 1+  (std::rand() % (Height-1));
+			valid_position = true;
+			for (int l = 0; l < rand_height && valid_position; l++)
+			{
+				for (int w = 0; w < rand_width && valid_position; w++)
+				{
+					int new_x = rand_x + w;
+					int new_y = rand_y + l;
+
+					if (new_x >= Width-1 || new_y >= Height-1 || occupied[new_y][new_x])
+					{
+						valid_position = false;
+					}
+					
+				}
+			}
+		}
+
+		// occupying squares where obstacle was put
+		Obstacles.push_back(Obstacle(rand_x, rand_y, IDType::Obstacle, rand_width, rand_height));
+		for (int l = 0; l < rand_height; l++)
+		{
+			for (int w = 0; w < rand_width; w++)
+			{
+				occupied[rand_y + l][rand_x + w] = true;
+			}
+		}
+	}
+
+	// putting all obstacles into Map
+	for (int obs = 0; obs < Obstacles.size(); obs++)
+	{
+		int x = Obstacles[obs].getX();
+		int y = Obstacles[obs].getY();
+		
+		for (int l = 0; l < Obstacles[obs].getLength(); l++)
+		{
+			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
+			{
+				MapArray[y + l][x + w] = static_cast<int>(Obstacles[obs].getID());
+			}
+		}
+	}
+}
+
+// calculating how many squares are without obstacle
+int Map::calcEmpty(int col, int length)
+{
+	int sum = 0;
+	for (int i = 0; i < length; i++)
+	{
+		if (MapArray[col][i] == 0)
+		{
+			sum++;
+		}
+	}
+	return sum;
+}
+
