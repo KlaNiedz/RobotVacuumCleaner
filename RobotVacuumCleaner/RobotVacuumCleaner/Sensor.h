@@ -20,7 +20,7 @@ private:
 	Map map;
 public:
 	//Constructor
-	Sensor(Map m, int x, int y, Direction h, int r);
+	Sensor(Map m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 1);
 
 	//Virtual deconstructor
 	virtual ~Sensor() {};

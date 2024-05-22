@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="Battery.h" />
     <ClInclude Include="ChargingStation.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="FrontSensor.h" />
     <ClInclude Include="IDType.h" />

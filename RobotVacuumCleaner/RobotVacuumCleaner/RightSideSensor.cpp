@@ -63,6 +63,7 @@ bool RightSideSensor::obstacle_in_range() const {
 		return false;
 		break;
 	default:
+		return false;
 		break;
 	}
 }
@@ -95,6 +96,7 @@ bool RightSideSensor::wall_detected() const {
 		return false;
 		break;
 	default:
+		return false;
 		break;
 	}
 }
@@ -127,6 +129,7 @@ bool RightSideSensor::dirt_detected() const {
 		return false;
 		break;
 	default:
+		return false;
 		break;
 	}
 }

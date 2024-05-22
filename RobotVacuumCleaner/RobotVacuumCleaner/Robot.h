@@ -21,5 +21,15 @@ class Robot {
 	LeftSideSensor l_sensor;
 	
 public:
-	Robot(int x, int y, Direction h, IDType repr, Battery b, Filter f, FrontSensor fs, RightSideSensor rs, LeftSideSensor ls);
+	Robot(
+		int x = 0, 
+		int y = 0, 
+		Direction h = Direction::North,
+		IDType r = IDType::Benek,
+		Battery b = Battery(),
+		Filter f = Filter(),
+		FrontSensor fs = FrontSensor(),
+		RightSideSensor rs = RightSideSensor(),
+		LeftSideSensor ls = LeftSideSensor()
+	);
 };

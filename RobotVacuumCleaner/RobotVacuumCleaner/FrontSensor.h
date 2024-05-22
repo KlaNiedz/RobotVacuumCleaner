@@ -3,7 +3,7 @@
 
 class FrontSensor : public Sensor {
 public:
-	FrontSensor(Map map, int x, int y, Direction h, int r);
+	FrontSensor(Map m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 3);
 
 	int get_dist_to_stop() const;
 

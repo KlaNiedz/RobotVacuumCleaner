@@ -63,6 +63,7 @@ bool LeftSideSensor::obstacle_in_range() const {
 		return false;
 		break;
 	default:
+		return false;
 		break;
 	}
 }
@@ -95,6 +96,7 @@ bool LeftSideSensor::wall_detected() const {
 		return false;
 		break;
 	default:
+		return false;
 		break;
 	}
 }
@@ -103,7 +105,7 @@ bool LeftSideSensor::dirt_detected() const {
 	switch (get_heading())
 	{
 	case Direction::North:
-		if (get_map().getXY(get_y(), get_x()-1) == IDType::Dirty) {// 0 - dirt, 1 - clean
+		if (get_map().getXY(get_y(), get_x()-1) == IDType::Dirty) {
 			return true;
 		}
 		return false;
@@ -127,6 +129,7 @@ bool LeftSideSensor::dirt_detected() const {
 		return false;
 		break;
 	default:
+		return false;
 		break;
 	}
 }

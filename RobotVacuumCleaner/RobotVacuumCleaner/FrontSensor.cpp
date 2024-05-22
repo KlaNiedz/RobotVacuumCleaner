@@ -1,7 +1,7 @@
 #include "FrontSensor.h"
 #include "IDType.h"
 
-FrontSensor::FrontSensor(Map m, int x, int y, Direction h, int r = 3) : Sensor(m, x, y, h, r) {}
+FrontSensor::FrontSensor(Map m, int x, int y, Direction h, int r) : Sensor(m, x, y, h, r) {}
 
 bool FrontSensor::obstacle_in_range() const {
 	int range;
