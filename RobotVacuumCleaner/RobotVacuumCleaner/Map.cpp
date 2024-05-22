@@ -2,6 +2,7 @@
 #include <ctime>
 #include "Map.h"
 #include "ChargingStation.h"
+#include "IDType.h"
 
 Map::Map(int height, int width)
 {
@@ -11,10 +12,10 @@ Map::Map(int height, int width)
 	Width = static_cast<int>(round(width/20.0));
 
 
-	MapArray = new int*[Height];
+	MapArray = new IDType*[Height];
 	for (int i = 0; i < Height; i++)
 	{
-		MapArray[i] = new int[Width];
+		MapArray[i] = new IDType[Width];
 	}
 
 	// creating an empty map
@@ -22,13 +23,13 @@ Map::Map(int height, int width)
 	{
 		for (int x = 0; x < Width; x++)
 		{
-			MapArray[y][x] = 0;
+			MapArray[y][x] = IDType::Dirty;
 		}
 	}
 	generateObstacles();
 	// putting Charging Station into map
 	ChargingStation charstat(Width-1, 0, IDType::ChargingStation);
-	MapArray[charstat.getY()][charstat.getX()] = static_cast<int>(charstat.getID());
+	MapArray[charstat.getY()][charstat.getX()] = charstat.getID();
 	
 }
 
@@ -41,7 +42,7 @@ Map::~Map()
 	delete[] MapArray;
 }
 
-int Map::getXY(int y_cor, int x_cor) const
+IDType Map::getXY(int y_cor, int x_cor) const
 {
 	return MapArray[y_cor][x_cor];
 }
@@ -56,7 +57,7 @@ int Map::getWidth() const
 	return Width;
 }
 
-void Map::setXY(int y_cor, int x_cor, int repr)
+void Map::setXY(int y_cor, int x_cor, IDType repr)
 {
 	if (y_cor < 0 || y_cor >= Height || x_cor < 0 || x_cor >= Width)
 		throw std::out_of_range("Coordinates out of bounds");
@@ -72,10 +73,10 @@ void Map::setHeightandWidth(int width, int height)
 	delete[] MapArray;
 	Height = static_cast<int>(round(height / 20.0));
 	Width = static_cast<int>(round(width / 20.0));
-	MapArray = new int* [Height];
+	MapArray = new IDType* [Height];
 	for (int i = 0; i < Height; i++)
 	{
-		MapArray[i] = new int[Width];
+		MapArray[i] = new IDType[Width];
 	}
 
 	// creating an empty map
@@ -83,7 +84,7 @@ void Map::setHeightandWidth(int width, int height)
 	{
 		for (int x = 0; x < Width; x++)
 		{
-			MapArray[y][x] = 0;
+			MapArray[y][x] = IDType::Dirty;
 		}
 	}
 }
@@ -157,23 +158,23 @@ void Map::generateObstacles()
 		{
 			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
 			{
-				MapArray[y + l][x + w] = static_cast<int>(Obstacles[obs].getID());
+				MapArray[y + l][x + w] = (Obstacles[obs].getID());
 			}
 		}
 	}
 }
 
 // calculating how many squares are without obstacle
-int Map::calcEmpty(int col, int length)
-{
-	int sum = 0;
-	for (int i = 0; i < length; i++)
-	{
-		if (MapArray[col][i] == 0)
-		{
-			sum++;
-		}
-	}
-	return sum;
-}
+//int Map::calcEmpty(int col, int length)
+//{
+//	int sum = 0;
+//	for (int i = 0; i < length; i++)
+//	{
+//		if (MapArray[col][i] == IDType::Dirty)
+//		{
+//			sum++;
+//		}
+//	}
+//	return sum;
+//}
 
