@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battery.cpp" />
     <ClCompile Include="ChargingStation.cpp" />
     <ClCompile Include="FrontSensor.cpp" />
     <ClCompile Include="LeftSideSensor.cpp" />
@@ -140,6 +141,7 @@
     <ClCompile Include="SideSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battery.h" />
     <ClInclude Include="ChargingStation.h" />
     <ClInclude Include="FrontSensor.h" />
     <ClInclude Include="IDType.h" />
