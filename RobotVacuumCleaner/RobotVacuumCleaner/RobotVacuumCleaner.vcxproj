@@ -131,6 +131,7 @@
     <ClCompile Include="ChargingStation.cpp" />
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="FrontSensor.cpp" />
+    <ClCompile Include="IDType.cpp" />
     <ClCompile Include="LeftSideSensor.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />

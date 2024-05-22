@@ -66,10 +66,10 @@ void Map::setHeightandWidth(int width, int height)
 	delete[] MapArray;
 	Height = static_cast<int>(round(height / 20.0));
 	Width = static_cast<int>(round(width / 20.0));
-	MapArray = new int* [Height];
+	MapArray = new IDType* [Height];
 	for (int i = 0; i < Height; i++)
 	{
-		MapArray[i] = new int[Width];
+		MapArray[i] = new IDType[Width];
 	}
 
 	// creating an empty map
@@ -77,7 +77,7 @@ void Map::setHeightandWidth(int width, int height)
 	{
 		for (int x = 0; x < Width; x++)
 		{
-			MapArray[y][x] = 0;
+			MapArray[y][x] = IDType::Dirty;
 		}
 	}
 }
