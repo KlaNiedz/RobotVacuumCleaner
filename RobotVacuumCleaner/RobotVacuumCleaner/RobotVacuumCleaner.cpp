@@ -6,8 +6,7 @@
 
 int main()
 {
-	Map map1(303, 250);
-	map1.showMap();
+	std::cout << "Hello World!\n";
 	
 }
 
