@@ -8,10 +8,10 @@ Map::Map(int height, int width)
 	Width = static_cast<int>(round(width/20.0));
 
 
-	MapArray = new int*[Height];
+	MapArray = new IDType*[Height];
 	for (int i = 0; i < Height; i++)
 	{
-		MapArray[i] = new int[Width];
+		MapArray[i] = new IDType[Width];
 	}
 
 	// creating an empty map
@@ -19,10 +19,10 @@ Map::Map(int height, int width)
 	{
 		for (int x = 0; x < Width; x++)
 		{
-			MapArray[y][x] = 0;
+			MapArray[y][x] = IDType::Dirty;
 		}
 	}
-	generateObstacles();
+	//generateObstacles();
 
 }
 
@@ -35,7 +35,7 @@ Map::~Map()
 	delete[] MapArray;
 }
 
-int Map::getXY(int y_cor, int x_cor)
+IDType Map::getXY(int y_cor, int x_cor)
 {
 	return MapArray[y_cor][x_cor];
 }
@@ -92,27 +92,60 @@ void Map::showMap()
 	}
 }
 
-void Map::generateObstacles()
-{
-	int num_obs = Height*Width/10;
-	for (int i = 0; i < num_obs; i++)
-	{
-		int rand_height = 1 + (std::rand() % (Height/2));
-		int rand_width = 1 + (std::rand() % (Width/2));
-		int rand_x = 0 + (std::rand() % Width);
-		int rand_y = 0 + (std::rand() % Height);
-
-
-		Obstacles.push_back(Obstacle(rand_x, rand_y, IDType::Obstacle, rand_width, rand_height));
-	}
-	for (int obs = 0; obs < Obstacles.size(); obs++)
-	{
-		int x = Obstacles[obs].getX();
-		int y = Obstacles[obs].getY();
-		if (x < 0 || x >= Width || y < 0 || y >= Height){
-			std::cout << "dupa" << x << y << std::endl;
-			continue; // Ensure obstacles are within bounds
-		}
-		MapArray[y][x] = static_cast<int>(Obstacles[obs].getID());
-	}
-}
+//void Map::generateObstacles()
+//{
+//	int num_obs = Height*Width/10;
+//	std::vector<std::vector<bool>> occupied(Height, std::vector<bool>(Width, false));
+//	for (int i = 0; i < num_obs; i++)
+//	{
+//		int rand_height = 1 + (std::rand() % (Height/4));
+//		int rand_width = 1 + (std::rand() % (Width/4));
+//		int rand_x = 0;
+//		int rand_y = 0;
+//		bool valid_position = false;
+//
+//
+//		while (!valid_position)
+//		{
+//			int rand_x = std::rand() % Width;
+//			int rand_y = std::rand() % Height;
+//			valid_position = true;
+//			for (int l = 0; l < rand_height && valid_position; l++)
+//			{
+//				for (int w = 0; w < rand_width && valid_position; w++)
+//				{
+//					int new_x = rand_x + w;
+//					int new_y = rand_y + l;
+//
+//					if (new_x >= Width || new_y >= Height || occupied[new_y][new_x])
+//					{
+//						valid_position = false;
+//					}
+//				}
+//			}
+//		}
+//
+//		Obstacles.push_back(Obstacle(rand_x, rand_y, IDType::Obstacle, rand_width, rand_height));
+//		for (int l = 0; l < rand_height; l++)
+//		{
+//			for (int w = 0; w < rand_width; w++)
+//			{
+//				occupied[rand_y + l][rand_x + w] = true;
+//			}
+//		}
+//	}
+//	for (int obs = 0; obs < Obstacles.size(); obs++)
+//	{
+//		int x = Obstacles[obs].getX();
+//		int y = Obstacles[obs].getY();
+//		
+//		/*MapArray[y][x] = static_cast<int>(Obstacles[obs].getID());*/
+//		for (int l = 0; l < Obstacles[obs].getLength(); l++)
+//		{
+//			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
+//			{
+//				MapArray[y + l][x + w] = static_cast<int>(Obstacles[obs].getID());
+//			}
+//		}
+//	}
+//}
