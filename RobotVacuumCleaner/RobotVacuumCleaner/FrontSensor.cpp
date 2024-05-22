@@ -1,4 +1,5 @@
 #include "FrontSensor.h"
+#include "IDType.h"
 
 FrontSensor::FrontSensor(Map m, int x, int y, Direction h, int r = 3) : Sensor(m, x, y, h, r) {}
 
@@ -14,7 +15,7 @@ bool FrontSensor::obstacle_in_range() const {
 			range = get_range();
 		}
 		for (int i = 1; i <= range; i++) {
-			if (get_map().getXY(get_y() - i, get_x()) == 3) {	
+			if (get_map().getXY(get_y() - i, get_x()) == IDType::Obstacle) {	
 				return true;
 			}
 		}
@@ -28,7 +29,7 @@ bool FrontSensor::obstacle_in_range() const {
 			range = get_range();
 		}
 		for (int i = 1; i <= range; i++) {
-			if (get_map().getXY(get_y(), get_x()+i) == 3) {
+			if (get_map().getXY(get_y(), get_x()+i) == IDType::Obstacle) {
 				return true;
 			}
 		}
@@ -42,7 +43,7 @@ bool FrontSensor::obstacle_in_range() const {
 			range = get_range();
 		}
 		for (int i = 1; i <= range; i++) {
-			if (get_map().getXY(get_y() + i, get_x()) == 3) {
+			if (get_map().getXY(get_y() + i, get_x()) == IDType::Obstacle) {
 				return true;
 			}
 		}
@@ -56,7 +57,7 @@ bool FrontSensor::obstacle_in_range() const {
 			range = get_range();
 		}
 		for (int i = 1; i <= range; i++) {
-			if (get_map().getXY(get_y(), get_x() - i) == 3) {
+			if (get_map().getXY(get_y(), get_x() - i) == IDType::Obstacle) {
 				return true;
 			}
 		}
@@ -74,7 +75,7 @@ int FrontSensor::get_dist_to_stop() const {
 		{
 		case Direction::North:			
 			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y() - i, get_x()) != 3) {
+				if (get_map().getXY(get_y() - i, get_x()) != IDType::Obstacle) {
 					distance += 1;
 				}
 				else return distance;
@@ -82,7 +83,7 @@ int FrontSensor::get_dist_to_stop() const {
 			break;
 		case Direction::East:
 			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y(), get_x() + i) != 3) {
+				if (get_map().getXY(get_y(), get_x() + i) != IDType::Obstacle) {
 					distance += 1;
 				}
 				else return distance;
@@ -91,7 +92,7 @@ int FrontSensor::get_dist_to_stop() const {
 		case Direction::South:
 			
 			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y() + i, get_x()) != 3) {
+				if (get_map().getXY(get_y() + i, get_x()) != IDType::Obstacle) {
 					distance += 1;
 				}
 				else return distance;
@@ -100,7 +101,7 @@ int FrontSensor::get_dist_to_stop() const {
 		case Direction::West:
 			
 			for (int i = 1; i <= get_range(); i++) {
-				if (get_map().getXY(get_y(), get_x() - i) != 3) {
+				if (get_map().getXY(get_y(), get_x() - i) != IDType::Obstacle) {
 					distance += 1;
 				}
 				else return distance;
@@ -151,25 +152,25 @@ bool FrontSensor::dirt_detected() const {
 	switch (get_heading())
 	{
 	case Direction::North:
-		if (get_map().getXY(get_y()-1,get_x()) == 0) {// 0 - dirt, 1 - clean
+		if (get_map().getXY(get_y()-1,get_x()) == IDType::Dirty) {// 0 - dirt, 1 - clean
 			return true;
 		}
 		return false;
 		break;
 	case Direction::East:
-		if (get_map().getXY(get_y(), get_x()+1) == 0) {
+		if (get_map().getXY(get_y(), get_x()+1) == IDType::Dirty) {
 			return true;
 		}
 		return false;
 		break;
 	case Direction::South:
-		if (get_map().getXY(get_y() + 1, get_x()) == 0) {
+		if (get_map().getXY(get_y() + 1, get_x()) == IDType::Dirty) {
 			return true;
 		}
 		return false;
 		break;
 	case Direction::West:
-		if (get_map().getXY(get_y(), get_x()-1) == 0) {
+		if (get_map().getXY(get_y(), get_x()-1) == IDType::Dirty) {
 			return true;
 		}
 		return false;
