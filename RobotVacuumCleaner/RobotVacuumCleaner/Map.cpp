@@ -50,7 +50,7 @@ int Map::getWidth()
 	return Width;
 }
 
-void Map::setXY(int y_cor, int x_cor, int repr)
+void Map::setXY(int y_cor, int x_cor, IDType repr)
 {
 	if (y_cor < 0 || y_cor >= Height || x_cor < 0 || x_cor >= Width)
 		throw std::out_of_range("Coordinates out of bounds");

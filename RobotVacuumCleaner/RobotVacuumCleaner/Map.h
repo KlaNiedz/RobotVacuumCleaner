@@ -16,7 +16,7 @@ public:
 	IDType getXY(int y_cor, int x_cor);
 	int getHeight();
 	int getWidth();
-	void setXY(int y_cor, int x_cor, int repr);
+	void setXY(int y_cor, int x_cor, IDType repr);
 	void setHeightandWidth(int width, int height);
 	void showMap();
 	/*void generateObstacles();*/
