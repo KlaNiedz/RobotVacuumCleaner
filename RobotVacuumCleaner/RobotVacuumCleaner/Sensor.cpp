@@ -1,6 +1,6 @@
 #include "Sensor.h"
 
-Sensor::Sensor(Map m, int x, int y, Direction h, int r) :
+Sensor::Sensor(const Map& m, int x, int y, Direction h, int r) :
 	x_coord(x), y_coord(y), heading(h), range(r), map(m) {}
 
 int Sensor::get_x() const {
@@ -39,7 +39,7 @@ void Sensor::set_heading(Direction new_heading) {
 	heading = new_heading;
 }
 
-void Sensor::set_map(Map new_map) {
+void Sensor::set_map(const Map& new_map) {
 	map = new_map;
 }
 

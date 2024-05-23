@@ -2,8 +2,12 @@
 #include "Sensor.h"
 
 class FrontSensor : public Sensor {
+protected:
+	int x_coord, y_coord, range;
+	Direction heading;
+	Map map;
 public:
-	FrontSensor(Map m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 3);
+	FrontSensor(const Map& m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 3);
 
 	int get_dist_to_stop() const;
 

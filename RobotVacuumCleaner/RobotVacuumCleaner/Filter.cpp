@@ -15,3 +15,4 @@ void Filter::setFillLevel(int newFillLevel) {
     }
     fillLevel = newFillLevel;
 }
+
