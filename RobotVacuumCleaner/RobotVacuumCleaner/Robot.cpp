@@ -59,6 +59,8 @@ bool Robot::take_step() {
 			set_x(get_x() - 1);
 			break;
 		}
+		discharge_battery();
+		fill_filter();
 		return true;
 	}
 }
@@ -94,5 +96,40 @@ void Robot::turn_right() {
 	case Direction::West:
 		set_heading(Direction::North);
 		break;
+	}
+}
+
+void Robot::discharge_battery() {
+	// Roz³adowanie baterii o pewn¹ wartoœæ za ka¿dy krok
+	int current_level = battery.getLevel();
+	if (current_level > 0) {
+		battery.setLevel(current_level - 1);
+	}
+}
+
+bool Robot::battery_low() {
+	return battery.getLevel() <= 15;
+}
+
+void Robot::fill_filter() {
+	int current_level = filter.getFillLevel();
+	if (current_level < 100) {
+		filter.setFillLevel(current_level + 1);
+	}
+}
+
+bool Robot::filter_fullfilled() {
+	return filter.getFillLevel() >= 85;
+}
+
+void Robot::charge_battery(const ChargingStation& charging_station) {
+	if (get_x() == charging_station.getX() && get_y() == charging_station.getY()) {
+		battery.setLevel(100);
+	}
+}
+
+void Robot::empty_filter(const ChargingStation& charging_station) {
+	if (get_x() == charging_station.getX() && get_y() == charging_station.getY()) {
+		filter.setFillLevel(0);
 	}
 }

@@ -61,4 +61,14 @@ public:
 	bool take_step();
 	void turn_right();
 	void turn_left();
+
+	//Bateria 
+	void discharge_battery();
+	bool battery_low();
+	void charge_battery(const ChargingStation& charging_station);
+
+	//Filtr
+	bool filter_fullfilled();
+	void empty_filter(const ChargingStation& charging_station);
+	void fill_filter();
 };
