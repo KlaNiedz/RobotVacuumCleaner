@@ -32,3 +32,67 @@ void Robot::set_filter(Filter new_filter) { filter = new_filter; }
 void Robot::set_f_sensor(FrontSensor new_f_sensor) { front_sensor = new_f_sensor; }
 void Robot::set_r_sensor(RightSideSensor new_r_sensor) { r_sensor = new_r_sensor; }
 void Robot::set_l_sensor(LeftSideSensor new_l_sensor) { l_sensor = new_l_sensor; }
+
+void Robot::update_sensors() const {
+	get_f_sensor().update_position(get_x(), get_y(), get_heading());
+	get_l_sensor().update_position(get_x(), get_y(), get_heading());
+	get_r_sensor().update_position(get_x(), get_y(), get_heading());
+}
+
+bool Robot::take_step() {
+	update_sensors();
+	if (get_f_sensor().wall_detected() && get_f_sensor().get_dist_to_stop() == 0) {
+		return false;
+	}
+	else {
+		switch (get_heading()) {
+		case Direction::North:
+			set_y(get_y() - 1);
+			break;
+		case Direction::South:
+			set_y(get_y() + 1);
+			break;
+		case Direction::East:
+			set_x(get_x() + 1);
+			break;
+		case Direction::West:
+			set_x(get_x() - 1);
+			break;
+		}
+		return true;
+	}
+}
+
+void Robot::turn_left() {
+	switch (get_heading()) {
+	case Direction::North:
+		set_heading(Direction::West);
+		break;
+	case Direction::South:
+		set_heading(Direction::East);
+		break;
+	case Direction::East:
+		set_heading(Direction::North);
+		break;
+	case Direction::West:
+		set_heading(Direction::South);
+		break;
+	}
+}
+
+void Robot::turn_right() {
+	switch (get_heading()) {
+	case Direction::North:
+		set_heading(Direction::East);
+		break;
+	case Direction::South:
+		set_heading(Direction::West);
+		break;
+	case Direction::East:
+		set_heading(Direction::South);
+		break;
+	case Direction::West:
+		set_heading(Direction::North);
+		break;
+	}
+}

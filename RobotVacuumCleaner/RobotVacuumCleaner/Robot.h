@@ -54,4 +54,11 @@ public:
 	void set_f_sensor(FrontSensor new_f_sensor);
 	void set_r_sensor(RightSideSensor new_r_sensor);
 	void set_l_sensor(LeftSideSensor new_l_sensor);
+
+	void update_sensors() const;
+
+	//Ruch
+	bool take_step();
+	void turn_right();
+	void turn_left();
 };
