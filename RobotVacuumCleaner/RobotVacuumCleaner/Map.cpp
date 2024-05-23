@@ -3,6 +3,8 @@
 #include "Map.h"
 #include "ChargingStation.h"
 #include "IDType.h"
+#include "raylib.h"
+#include "Constants.h"
 
 Map::Map(int height, int width)
 {
@@ -103,7 +105,7 @@ void Map::showMap()
 void Map::generateObstacles()
 {
 	std::srand(std::time(nullptr));
-	int num_obs = Height*Width/15;
+	int num_obs = Height*Width/25;
 	std::vector<std::vector<bool>> occupied(Height, std::vector<bool>(Width, false));
 	occupied[CharStat.getY()][CharStat.getX()] = true;
 
@@ -159,6 +161,7 @@ void Map::generateObstacles()
 			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
 			{
 				MapArray[y + l][x + w] = (Obstacles[obs].getID());
+				
 			}
 		}
 	}
@@ -172,6 +175,7 @@ void Map::addObject(int y_cor, int x_cor, int height, int width, IDType repr)
 			for (int w = 0; w < width; w++)
 			{
 				MapArray[y_cor + h][x_cor + w] = repr;
+
 			}
 		}
 	}
@@ -179,6 +183,34 @@ void Map::addObject(int y_cor, int x_cor, int height, int width, IDType repr)
 		std::cout << "Wrong coordinates:" << myNum << ". Height of the map : " << Height << " Width of the map : " << Width << std::endl;
 	}
 }
+
+void Map::addObstacle(Obstacle obs)
+{
+	obs.draw();
+}
+
+void Map::drawAllObstacles()
+{
+	for (int obs = 0; obs < Obstacles.size(); obs++)
+	{
+		int x = Obstacles[obs].getX();
+		int y = Obstacles[obs].getY();
+		/*Obstacles[obs].draw();*/
+
+		for (int l = 0; l < Obstacles[obs].getLength(); l++)
+		{
+			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
+			{
+				/*MapArray[y + l][x + w] = (Obstacles[obs].getID());*/
+				
+				DrawRectangle((x+w)*cell_size, (y+l)*cell_size, cell_size, cell_size, colorMap[BasicColor::Violet]);
+
+			}
+		}
+	}
+}
+
+
 
 // calculating how many squares are without obstacle
 //int Map::calcEmpty(int col, int length)

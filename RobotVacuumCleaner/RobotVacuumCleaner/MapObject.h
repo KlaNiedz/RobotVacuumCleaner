@@ -23,6 +23,7 @@ public:
     void setX(int newX);
     void setY(int newY);
     void setID(IDType newID);
+    
 };
 
 #endif // MAPOBJECT_H

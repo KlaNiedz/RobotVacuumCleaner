@@ -1,5 +1,7 @@
 #include "Obstacle.h"
 #include <iostream>
+#include "raylib.h"
+#include "Constants.h"
 
 Obstacle::Obstacle(int x, int y, IDType ID, int width, int length)
     : MapObject(x, y, ID)
@@ -35,4 +37,9 @@ void Obstacle::displayInfo() const {
         << " at (" << getX() << ", " << getY() << ")"
         << " with width: " << getWidth()
         << " and length: " << getLength() << std::endl;
+}
+
+void Obstacle::draw()
+{
+    DrawRectangle(x*cell_size, y*cell_size, cell_size, cell_size, colorMap[BasicColor::Violet]);
 }

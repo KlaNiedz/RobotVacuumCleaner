@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="ChargingStation.cpp" />
+    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="FrontSensor.cpp" />
     <ClCompile Include="IDType.cpp" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Battery.h" />
     <ClInclude Include="ChargingStation.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="FrontSensor.h" />

@@ -19,6 +19,7 @@ public:
     void setLength(int newLength);
 
     void displayInfo() const override;
+    void draw();
 };
 
 #endif // OBSTACLE_H

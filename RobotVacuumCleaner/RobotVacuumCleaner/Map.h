@@ -23,6 +23,9 @@ public:
 	void showMap();
 	void generateObstacles();
 	void addObject(int y_cor, int x_cor, int height, int width, IDType repr);
+	void Draw();
+	void addObstacle(Obstacle obs);
+	void drawAllObstacles();
 	/*int calcEmpty(int col, int length);*/
 };
 

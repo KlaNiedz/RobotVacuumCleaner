@@ -1,4 +1,5 @@
 #include "MapObject.h"
+#include "raylib.h"
 
 MapObject::MapObject(int x, int y, IDType ID)
 {
@@ -32,3 +33,4 @@ void MapObject::setY(int newY) {
 void MapObject::setID(IDType newID) {
     ID = newID;
 }
+
