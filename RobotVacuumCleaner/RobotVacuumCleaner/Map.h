@@ -22,6 +22,7 @@ public:
 	void setHeightandWidth(int width, int height);
 	void showMap();
 	void generateObstacles();
+	void addObject(int y_cor, int x_cor, int height, int width, IDType repr);
 	/*int calcEmpty(int col, int length);*/
 };
 

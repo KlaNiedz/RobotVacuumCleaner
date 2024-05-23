@@ -164,6 +164,22 @@ void Map::generateObstacles()
 	}
 }
 
+void Map::addObject(int y_cor, int x_cor, int height, int width, IDType repr)
+{
+	try {
+		for (int h = 0; h < height; h++)
+		{
+			for (int w = 0; w < width; w++)
+			{
+				MapArray[y_cor + h][x_cor + w] = repr;
+			}
+		}
+	}
+	catch (int myNum) {
+		std::cout << "Wrong coordinates:" << myNum << ". Height of the map : " << Height << " Width of the map : " << Width << std::endl;
+	}
+}
+
 // calculating how many squares are without obstacle
 //int Map::calcEmpty(int col, int length)
 //{
