@@ -33,14 +33,14 @@ Map::Map(int height, int width)
 	
 }
 
-Map::~Map()
-{
-	for (int i = 0; i < Height; i++)
-	{
-		delete[] MapArray[i];
-	}
-	delete[] MapArray;
-}
+//Map::~Map()
+//{
+//	for (int i = 0; i < Height; i++)
+//	{
+//		delete[] MapArray[i];
+//	}
+//	delete[] MapArray;
+//}
 
 IDType Map::getXY(int y_cor, int x_cor) const
 {
