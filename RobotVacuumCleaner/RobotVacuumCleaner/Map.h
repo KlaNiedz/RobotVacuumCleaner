@@ -14,7 +14,7 @@ private:
 	ChargingStation CharStat;
 public:
 	Map(int height = 200, int width = 200);
-	~Map();
+	/*~Map();*/
 	IDType getXY(int y_cor, int x_cor) const;
 	int getHeight() const;
 	int getWidth() const;
