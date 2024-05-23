@@ -14,16 +14,16 @@ class Sensor {
 	///				- bêdzie zwraca³ informacjê typu bool ("Czy po bokach jest pusto?"),
 	///				- mo¿na dodaæ kolejne dziedziczenie (Right Side Sensor i Left Side Sensor)
 	/// 	Za pomoc¹ tych czujników Benek bêdzie móg³ stosowaæ manewry omijania i zawracania.
-private:
+protected:
 	int x_coord, y_coord, range;
 	Direction heading;
 	Map map;
 public:
 	//Constructor
-	Sensor(Map m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 1);
+	Sensor(const Map& m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 1);
 
 	//Virtual deconstructor
-	virtual ~Sensor() {};
+	virtual ~Sensor() = default;
 
 	//Getters
 	int get_x() const;
@@ -37,7 +37,7 @@ public:
 	void set_y(int);
 	void set_range(int);
 	void set_heading(Direction);
-	void set_map(Map);
+	void set_map(const Map&);
 
 	bool update_position(int, int, Direction);
 
