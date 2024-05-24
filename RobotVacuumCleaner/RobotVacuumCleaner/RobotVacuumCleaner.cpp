@@ -25,7 +25,7 @@ int main()
 		BeginDrawing();
 
 		//Drawing
-		ClearBackground(colorMap[BasicColor::Blue]);
+		ClearBackground(colorMap[BasicColor::DarkBlue]);
 		
 		/*myMap.drawAllObstacles();*/
 		game.draw();

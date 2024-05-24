@@ -4,7 +4,9 @@
 void Game::draw()
 {
 	myMap.drawAllObstacles();
+	myMap.drawCleaned();
 	myRobot.draw();
+	
 }
 
 //void Game::update()

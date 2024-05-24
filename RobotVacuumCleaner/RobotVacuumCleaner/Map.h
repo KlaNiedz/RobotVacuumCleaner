@@ -4,6 +4,7 @@
 #include "Obstacle.h"
 #include "IDType.h"
 #include "ChargingStation.h"
+#include "CleanSquare.h"
 //#include "Robot.h"
 
 class Map
@@ -14,7 +15,7 @@ private:
 	int Width;
 	std::vector<Obstacle> Obstacles;
 	ChargingStation CharStat;
-	//Robot* robot;
+	std::vector<CleanSquare> Cleaned;
 public:
 	Map(int height = 200, int width = 200);
 	~Map();
@@ -29,6 +30,8 @@ public:
 	//void Draw();
 	void addObstacle(Obstacle obs);
 	void drawAllObstacles();
+	void clean(int x, int y);
+	void drawCleaned();
 	//void placeRobot(Robot* robot);
 	/*int calcEmpty(int col, int length);*/
 };

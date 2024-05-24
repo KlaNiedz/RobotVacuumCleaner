@@ -169,30 +169,38 @@ void Robot::draw()
 void Robot::move_right()
 {
 	body = Vector2Add(body, direction_right);
+	map->clean(x_coord, y_coord);
 	x_coord = body.x;
 	y_coord = body.y;
+	place_on_map();
 
 }
 
 void Robot::move_left()
 {
 	body = Vector2Add(body, direction_left);
+	map->clean(x_coord, y_coord);
 	x_coord = body.x;
 	y_coord = body.y;
+	place_on_map();
 }
 
 void Robot::move_up()
 {
 	body = Vector2Add(body, direction_up);
+	map->clean(x_coord, y_coord);
 	x_coord = body.x;
 	y_coord = body.y;
+	place_on_map();
 }
 
 void Robot::move_down()
 {
 	body = Vector2Add(body, direction_down);
+	map->clean(x_coord, y_coord);
 	x_coord = body.x;
 	y_coord = body.y;
+	place_on_map();
 }
 
 

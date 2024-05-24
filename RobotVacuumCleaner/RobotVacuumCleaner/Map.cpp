@@ -5,6 +5,7 @@
 #include "IDType.h"
 #include "raylib.h"
 #include "Constants.h"
+#include "CleanSquare.h"
 
 Map::Map(int height, int width)
 {
@@ -210,25 +211,20 @@ void Map::drawAllObstacles()
 	}
 }
 
-//void Map::placeRobot(Robot* rob)
-//{
-//	if (robot != nullptr) {
-//		throw std::runtime_error("Robot already placed on map");
-//	}
-//
-//	robot = rob;
-//	int x = robot->get_x();
-//	int y = robot->get_y();
-//	if (x < 0 || x >= Width || y < 0 || y >= Height)
-//	{
-//		throw std::out_of_range("Robot coordinates out of bounds");
-//	}
-//	if (MapArray[y][x] != IDType::ChargingStation)
-//	{
-//		throw std::runtime_error("Cannot place robot without charging station");
-//	}
-//	MapArray[y][x] = robot->get_repr();
-//}
+void Map::clean(int x, int y)
+{
+	placeObject(y, x, IDType::Clean);
+	CleanSquare clean_square(x, y, IDType::Clean);
+	Cleaned.push_back(clean_square);
+}
+
+void Map::drawCleaned()
+{
+	for (int i = 0; i < Cleaned.size(); i++)
+	{
+		Cleaned[i].draw();
+	}
+}
 
 
 // calculating how many squares are without obstacle
