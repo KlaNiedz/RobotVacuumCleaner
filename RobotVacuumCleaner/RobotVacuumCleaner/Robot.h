@@ -39,7 +39,10 @@ public:
 	);
 
 	Vector2 body = { static_cast<float>(x_coord), static_cast<float>(y_coord)};
-	Vector2 direction = { 1, 0 };
+	Vector2 direction_right = { 1, 0 };
+	Vector2 direction_left = { -1, 0 };
+	Vector2 direction_up = { 0, -1 };
+	Vector2 direction_down = { 0, 1 };
 
 
 	/*Robot(int x, int y, Direction h, IDType r, Battery b, Filter f, FrontSensor fs, RightSideSensor rs, LeftSideSensor ls, Map* map);*/
@@ -87,5 +90,8 @@ public:
 
 	void place_on_map();
 	void draw();
-	void update();
+	void move_right();
+	void move_left();
+	void move_up();
+	void move_down();
 };

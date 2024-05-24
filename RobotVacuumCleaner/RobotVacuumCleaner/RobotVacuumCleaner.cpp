@@ -29,6 +29,24 @@ int main()
 		
 		/*myMap.drawAllObstacles();*/
 		game.draw();
+
+		if (IsKeyPressed(KEY_RIGHT))
+		{
+			game.myRobot.move_right();
+		}
+		else if (IsKeyPressed(KEY_LEFT))
+		{
+			game.myRobot.move_left();
+		}
+		else if (IsKeyPressed(KEY_UP))
+		{
+			game.myRobot.move_up();
+		}
+		else if (IsKeyPressed(KEY_DOWN))
+		{
+			game.myRobot.move_down();
+		}
+	
 		//game.update();
 
 		EndDrawing();

@@ -166,12 +166,33 @@ void Robot::draw()
 	DrawRectangleRounded(segment, 0.5, 6, colorMap[BasicColor::Pink]);
 }
 
-void Robot::update()
+void Robot::move_right()
 {
-	body = Vector2Add(body, direction);
+	body = Vector2Add(body, direction_right);
 	x_coord = body.x;
 	y_coord = body.y;
 
+}
+
+void Robot::move_left()
+{
+	body = Vector2Add(body, direction_left);
+	x_coord = body.x;
+	y_coord = body.y;
+}
+
+void Robot::move_up()
+{
+	body = Vector2Add(body, direction_up);
+	x_coord = body.x;
+	y_coord = body.y;
+}
+
+void Robot::move_down()
+{
+	body = Vector2Add(body, direction_down);
+	x_coord = body.x;
+	y_coord = body.y;
 }
 
 

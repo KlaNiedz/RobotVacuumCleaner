@@ -7,7 +7,7 @@ void Game::draw()
 	myRobot.draw();
 }
 
-void Game::update()
-{
-	myRobot.update();
-}
+//void Game::update()
+//{
+//	myRobot.update();
+//}
