@@ -29,7 +29,7 @@ int main()
 		
 		/*myMap.drawAllObstacles();*/
 		game.draw();
-		game.update();
+		//game.update();
 
 		EndDrawing();
 	}
