@@ -12,6 +12,6 @@ void CleanSquare::displayInfo() const
 
 void CleanSquare::draw() 
 {
-	DrawRectangle(x * cell_size, y * cell_size, cell_size, cell_size, colorMap[BasicColor::Blue]);
+	DrawRectangle(x * cell_size, y * cell_size, cell_size, cell_size, colorMap[BasicColor::Brown]);
 
 }

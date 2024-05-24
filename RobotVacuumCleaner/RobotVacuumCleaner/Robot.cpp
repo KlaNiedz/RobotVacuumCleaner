@@ -163,7 +163,7 @@ void Robot::draw()
 {
 	/*DrawCircle((x_coord +)*cell_size*cell_size, (y_coord + 10)*cell_size, cell_size, colorMap[BasicColor::Pink]);*/
 	Rectangle segment = Rectangle{ static_cast<float>(x_coord * cell_size),  static_cast<float>(y_coord * cell_size),  static_cast<float>(cell_size),  static_cast<float>(cell_size) };
-	DrawRectangleRounded(segment, 0.5, 6, colorMap[BasicColor::Pink]);
+	DrawRectangleRounded(segment, 0.5, 6, colorMap[BasicColor::Grey]);
 }
 
 void Robot::move_right()

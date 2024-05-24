@@ -204,7 +204,7 @@ void Map::drawAllObstacles()
 			{
 				/*MapArray[y + l][x + w] = (Obstacles[obs].getID());*/
 				
-				DrawRectangle((x+w)*cell_size, (y+l)*cell_size, cell_size, cell_size, colorMap[BasicColor::Violet]);
+				DrawRectangle((x+w)*cell_size, (y+l)*cell_size, cell_size, cell_size, colorMap[BasicColor::Bluesih]);
 
 			}
 		}
