@@ -132,6 +132,7 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="FrontSensor.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="IDType.cpp" />
     <ClCompile Include="LeftSideSensor.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Direction.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="FrontSensor.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="IDType.h" />
     <ClInclude Include="LeftSideSensor.h" />
     <ClInclude Include="Map.h" />

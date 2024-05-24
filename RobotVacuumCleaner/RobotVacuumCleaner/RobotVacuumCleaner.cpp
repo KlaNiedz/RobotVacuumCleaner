@@ -5,17 +5,19 @@
 #include "Map.h"
 #include "raylib.h"
 #include "Constants.h"
+#include "Game.h"
 
 
 
 
 int main()
 {
-	Map myMap(300, 350);
+	Game game = Game();
+
 	// generating map in terminal
-	myMap.showMap();
+	game.myMap.showMap();
 	
-	InitWindow(myMap.getWidth()*cell_size, myMap.getHeight()*cell_size, "Robot Vacuum Cleaner");
+	InitWindow(game.myMap.getWidth()*cell_size, game.myMap.getHeight()*cell_size, "Robot Vacuum Cleaner");
 	SetTargetFPS(60);
 	
 	while (WindowShouldClose() == false)
@@ -25,7 +27,9 @@ int main()
 		//Drawing
 		ClearBackground(colorMap[BasicColor::Blue]);
 		
-		myMap.drawAllObstacles();
+		/*myMap.drawAllObstacles();*/
+		game.draw();
+		game.update();
 
 		EndDrawing();
 	}

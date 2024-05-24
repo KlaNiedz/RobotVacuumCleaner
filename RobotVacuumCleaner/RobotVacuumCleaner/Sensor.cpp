@@ -1,7 +1,7 @@
 #include "Sensor.h"
 
 Sensor::Sensor(const Map& m, int x, int y, Direction h, int r) :
-	x_coord(x), y_coord(y), heading(h), range(r), map(m) {}
+	map(m), x_coord(x), y_coord(y), heading(h), range(r) {}
 
 int Sensor::get_x() const {
 	return x_coord;
@@ -19,7 +19,7 @@ Direction Sensor::get_heading() const {
 	return heading;
 }
 
-Map Sensor::get_map() const {
+const Map& Sensor::get_map() const {
 	return map;
 }
 
@@ -39,13 +39,16 @@ void Sensor::set_heading(Direction new_heading) {
 	heading = new_heading;
 }
 
-void Sensor::set_map(const Map& new_map) {
-	map = new_map;
-}
+//void Sensor::set_map(const Map& new_map) {
+//	map = new_map;
+//}
 
-bool Sensor::update_position(int current_x, int current_y, Direction current_heading) {
-	set_x(current_x);
-	set_y(current_y);
-	set_heading(current_heading);
-	return true;
+void Sensor::update_position(int current_x, int current_y, Direction current_heading) {
+	//set_x(current_x);
+	//set_y(current_y);
+	//set_heading(current_heading);
+	//return true;
+	this->x_coord = current_x;
+	this->y_coord = current_y;
+	this->heading = current_heading;
 }

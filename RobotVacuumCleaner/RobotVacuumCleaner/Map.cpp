@@ -35,14 +35,14 @@ Map::Map(int height, int width)
 	
 }
 
-//Map::~Map()
-//{
-//	for (int i = 0; i < Height; i++)
-//	{
-//		delete[] MapArray[i];
-//	}
-//	delete[] MapArray;
-//}
+Map::~Map()
+{
+	for (int i = 0; i < Height; i++)
+	{
+		delete[] MapArray[i];
+	}
+	delete[] MapArray;
+}
 
 IDType Map::getXY(int y_cor, int x_cor) const
 {
@@ -59,7 +59,7 @@ int Map::getWidth() const
 	return Width;
 }
 
-void Map::setXY(int y_cor, int x_cor, IDType repr)
+void Map::placeObject(int y_cor, int x_cor, IDType repr)
 {
 	if (y_cor < 0 || y_cor >= Height || x_cor < 0 || x_cor >= Width)
 		throw std::out_of_range("Coordinates out of bounds");
@@ -210,6 +210,25 @@ void Map::drawAllObstacles()
 	}
 }
 
+//void Map::placeRobot(Robot* rob)
+//{
+//	if (robot != nullptr) {
+//		throw std::runtime_error("Robot already placed on map");
+//	}
+//
+//	robot = rob;
+//	int x = robot->get_x();
+//	int y = robot->get_y();
+//	if (x < 0 || x >= Width || y < 0 || y >= Height)
+//	{
+//		throw std::out_of_range("Robot coordinates out of bounds");
+//	}
+//	if (MapArray[y][x] != IDType::ChargingStation)
+//	{
+//		throw std::runtime_error("Cannot place robot without charging station");
+//	}
+//	MapArray[y][x] = robot->get_repr();
+//}
 
 
 // calculating how many squares are without obstacle
