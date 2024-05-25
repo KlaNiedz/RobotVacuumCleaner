@@ -62,7 +62,6 @@ void Robot::go_up() {
 	set_heading(Direction::North);
 	update_sensors();
 	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
-		set_x(get_y() - 1);
 		move_up();
 	}
 }
@@ -71,7 +70,6 @@ void Robot::go_down() {
 	set_heading(Direction::South);
 	update_sensors();
 	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
-		set_x(get_y() + 1);
 		move_down();
 	}
 }
@@ -80,7 +78,6 @@ void Robot::go_left() {
 	set_heading(Direction::West);
 	update_sensors();
 	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
-		set_x(get_x() - 1);
 		move_left();
 	}
 }
@@ -89,7 +86,6 @@ void Robot::go_right() {
 	set_heading(Direction::West);
 	update_sensors();
 	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
-		set_x(get_x() + 1);
 		move_right();
 	}
 }
