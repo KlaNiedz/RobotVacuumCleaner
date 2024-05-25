@@ -83,7 +83,7 @@ void Robot::go_left() {
 }
 
 void Robot::go_right() {
-	set_heading(Direction::West);
+	set_heading(Direction::East);
 	update_sensors();
 	if (not front_sensor.wall_detected() && front_sensor.get_dist_to_stop() > 0) {
 		move_right();
