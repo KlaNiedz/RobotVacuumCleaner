@@ -58,63 +58,39 @@ void Robot::update_sensors() {
 	r_sensor.update_position(x_coord, y_coord, heading);
 }
 
-bool Robot::take_step() {
+void Robot::go_up() {
+	set_heading(Direction::North);
 	update_sensors();
-	if (front_sensor.wall_detected() && front_sensor.get_dist_to_stop() == 0) {
-		return false;
-	}
-	else {
-		switch (get_heading()) {
-		case Direction::North:
-			set_y(get_y() - 1);
-			break;
-		case Direction::South:
-			set_y(get_y() + 1);
-			break;
-		case Direction::East:
-			set_x(get_x() + 1);
-			break;
-		case Direction::West:
-			set_x(get_x() - 1);
-			break;
-		}
-		discharge_battery();
-		fill_filter();
-		return true;
+	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
+		set_x(get_y() - 1);
+		move_up();
 	}
 }
 
-void Robot::turn_left() {
-	switch (get_heading()) {
-	case Direction::North:
-		set_heading(Direction::West);
-		break;
-	case Direction::South:
-		set_heading(Direction::East);
-		break;
-	case Direction::East:
-		set_heading(Direction::North);
-		break;
-	case Direction::West:
-		set_heading(Direction::South);
-		break;
+void Robot::go_down() {
+	set_heading(Direction::South);
+	update_sensors();
+	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
+		set_x(get_y() + 1);
+		move_down();
 	}
 }
 
-void Robot::turn_right() {
-	switch (get_heading()) {
-	case Direction::North:
-		set_heading(Direction::East);
-		break;
-	case Direction::South:
-		set_heading(Direction::West);
-		break;
-	case Direction::East:
-		set_heading(Direction::South);
-		break;
-	case Direction::West:
-		set_heading(Direction::North);
-		break;
+void Robot::go_left() {
+	set_heading(Direction::West);
+	update_sensors();
+	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
+		set_x(get_x() - 1);
+		move_left();
+	}
+}
+
+void Robot::go_right() {
+	set_heading(Direction::West);
+	update_sensors();
+	if (not front_sensor.wall_detected() || front_sensor.get_dist_to_stop() > 0) {
+		set_x(get_x() + 1);
+		move_right();
 	}
 }
 

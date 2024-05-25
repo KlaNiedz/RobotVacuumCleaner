@@ -73,9 +73,10 @@ public:
 	void update_sensors();
 
 	//Ruch
-	bool take_step();
-	void turn_right();
-	void turn_left();
+	void go_up();
+	void go_down();
+	void go_right();
+	void go_left();
 	void move(int new_x, int new_y);
 
 	//Bateria 
