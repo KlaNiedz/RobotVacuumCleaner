@@ -32,19 +32,19 @@ int main()
 
 		if (IsKeyPressed(KEY_RIGHT))
 		{
-			game.myRobot.move_right();
+			game.myRobot.go_right();
 		}
 		else if (IsKeyPressed(KEY_LEFT))
 		{
-			game.myRobot.move_left();
+			game.myRobot.go_left();
 		}
 		else if (IsKeyPressed(KEY_UP))
 		{
-			game.myRobot.move_up();
+			game.myRobot.go_up();
 		}
 		else if (IsKeyPressed(KEY_DOWN))
 		{
-			game.myRobot.move_down();
+			game.myRobot.go_down();
 		}
 	
 		//game.update();
