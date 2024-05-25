@@ -31,7 +31,7 @@ Map::Map(int height, int width)
 	}
 	generateObstacles();
 	// putting Charging Station into map
-	ChargingStation charstat(Width-1, 0, IDType::ChargingStation);
+	ChargingStation charstat(0, 0, IDType::ChargingStation);
 	MapArray[charstat.getY()][charstat.getX()] = charstat.getID();
 	
 }
@@ -67,30 +67,34 @@ void Map::placeObject(int y_cor, int x_cor, IDType repr)
 	MapArray[y_cor][x_cor] = repr;
 }
 
-void Map::setHeightandWidth(int width, int height)
-{
-	for (int i = 0; i < Height; i++)
-	{
-		delete[] MapArray[i];
-	}
-	delete[] MapArray;
-	Height = static_cast<int>(round(height / 20.0));
-	Width = static_cast<int>(round(width / 20.0));
-	MapArray = new IDType* [Height];
-	for (int i = 0; i < Height; i++)
-	{
-		MapArray[i] = new IDType[Width];
-	}
-
-	// creating an empty map
-	for (int y = 0; y < Height; y++)
-	{
-		for (int x = 0; x < Width; x++)
-		{
-			MapArray[y][x] = IDType::Dirty;
-		}
-	}
-}
+//void Map::setHeightandWidth(int width, int height)
+//{
+//	for (int i = 0; i < Height; i++)
+//	{
+//		delete[] MapArray[i];
+//	}
+//	delete[] MapArray;
+//	Height = static_cast<int>(round(height / 20.0));
+//	Width = static_cast<int>(round(width / 20.0));
+//	MapArray = new IDType* [Height];
+//	for (int i = 0; i < Height; i++)
+//	{
+//		MapArray[i] = new IDType[Width];
+//	}
+//
+//	// creating an empty map
+//	for (int y = 0; y < Height; y++)
+//	{
+//		for (int x = 0; x < Width; x++)
+//		{
+//			MapArray[y][x] = IDType::Dirty;
+//		}
+//	}
+//	generateObstacles();
+//	// putting Charging Station into map
+//	ChargingStation charstat(0, 0, IDType::ChargingStation);
+//	MapArray[charstat.getY()][charstat.getX()] = charstat.getID();
+//}
 
 void Map::showMap()
 {
@@ -201,9 +205,7 @@ void Map::drawAllObstacles()
 		for (int l = 0; l < Obstacles[obs].getLength(); l++)
 		{
 			for (int w = 0; w < Obstacles[obs].getWidth(); w++)
-			{
-				/*MapArray[y + l][x + w] = (Obstacles[obs].getID());*/
-				
+			{				
 				DrawRectangle((x+w)*cell_size, (y+l)*cell_size, cell_size, cell_size, colorMap[BasicColor::Bluesih]);
 
 			}
@@ -224,6 +226,11 @@ void Map::drawCleaned()
 	{
 		Cleaned[i].draw();
 	}
+}
+
+void Map::drawCharStat()
+{
+	CharStat.draw();
 }
 
 

@@ -5,6 +5,7 @@ void Game::draw()
 {
 	myMap.drawAllObstacles();
 	myMap.drawCleaned();
+	myMap.drawCharStat();
 	myRobot.draw();
 	
 }

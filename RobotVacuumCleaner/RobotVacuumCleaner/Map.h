@@ -32,6 +32,7 @@ public:
 	void drawAllObstacles();
 	void clean(int x, int y);
 	void drawCleaned();
+	void drawCharStat();
 	//void placeRobot(Robot* robot);
 	/*int calcEmpty(int col, int length);*/
 };
