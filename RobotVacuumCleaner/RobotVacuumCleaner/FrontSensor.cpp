@@ -129,13 +129,13 @@ bool FrontSensor::wall_detected() const {
 		return false;
 		break;
 	case Direction::East:
-		if (get_x() == get_map().getWidth()) {
+		if (get_x() == get_map().getWidth() - 1) {
 			return true;
 		}
 		return false;
 		break;
 	case Direction::South:
-		if (get_y() == get_map().getHeight()) {
+		if (get_y() == get_map().getHeight() - 1) {
 			return true;
 		}
 		return false;
