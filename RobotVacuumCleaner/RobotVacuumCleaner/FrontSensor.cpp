@@ -43,7 +43,7 @@ bool FrontSensor::obstacle_in_range() const {
 			range = get_range();
 		}
 		for (int i = 1; i <= range; i++) {
-			if (get_map().getXY(get_y(), get_x() + i) == IDType::Obstacle) {
+			if (get_map().getXY(get_y() + 1, get_x()) == IDType::Obstacle) {
 				return true;
 			}
 		}
