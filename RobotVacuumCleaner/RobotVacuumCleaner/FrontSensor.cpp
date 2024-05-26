@@ -35,7 +35,7 @@ bool FrontSensor::obstacle_in_range() const {
 		}
 		return false;
 		break;
-	case Direction::South :
+	case Direction::South:
 		if (get_y() + get_range() > get_map().getHeight()) {
 			range = get_map().getHeight() - get_y();
 		}
@@ -43,7 +43,7 @@ bool FrontSensor::obstacle_in_range() const {
 			range = get_range();
 		}
 		for (int i = 1; i <= range; i++) {
-			if (get_map().getXY(get_y() + i, get_x()) == IDType::Obstacle) {
+			if (get_map().getXY(get_y(), get_x() + i) == IDType::Obstacle) {
 				return true;
 			}
 		}
