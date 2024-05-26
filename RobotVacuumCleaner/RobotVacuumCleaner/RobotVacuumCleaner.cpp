@@ -9,15 +9,15 @@
 
 
 
-
 int main()
 {
+
 	Game game = Game();
 
 	// generating map in terminal
 	game.myMap.showMap();
 	
-	InitWindow(game.myMap.getWidth()*cell_size, game.myMap.getHeight()*cell_size, "Robot Vacuum Cleaner");
+	InitWindow((game.myMap.getWidth()*cell_size)+200, (game.myMap.getHeight()*cell_size), "Robot Vacuum Cleaner");
 	SetTargetFPS(60);
 	
 	while (WindowShouldClose() == false)
@@ -25,7 +25,7 @@ int main()
 		BeginDrawing();
 
 		//Drawing
-		ClearBackground(colorMap[BasicColor::DarkBrown]);
+		ClearBackground(colorMap[BasicColor::Bluesih]);
 		
 		/*myMap.drawAllObstacles();*/
 		game.draw();

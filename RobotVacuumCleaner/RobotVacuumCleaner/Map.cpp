@@ -45,6 +45,16 @@ Map::~Map()
 	delete[] MapArray;
 }
 
+void Map::Draw() {
+	for (int y = 0; y < Height; y++)
+	{
+		for (int x = 0; x < Width; x++)
+		{
+			DrawRectangle(x * cell_size, y * cell_size, cell_size, cell_size, colorMap[BasicColor::DarkBrown]);
+		}
+	}
+}
+
 IDType Map::getXY(int y_cor, int x_cor) const
 {
 	return MapArray[y_cor][x_cor];

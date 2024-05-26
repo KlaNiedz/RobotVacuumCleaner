@@ -12,6 +12,7 @@ std::map<BasicColor, Color> colorMap = {
     { BasicColor::Brown, Color{  219, 185, 140, 255  } },
     { BasicColor::DarkBrown, Color{  141, 119, 92, 255  } },
     { BasicColor::Bluesih, Color{  0, 102, 102, 255  } },
+    { BasicColor::White, Color{  255, 255, 255, 255  } },
 };
 
 const int cell_size = 40;
