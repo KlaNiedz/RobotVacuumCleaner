@@ -82,11 +82,11 @@ public:
 	//Bateria 
 	void discharge_battery();
 	bool battery_low();
-	void charge_battery(const ChargingStation& charging_station);
+	void charge_battery();
 
 	//Filtr
 	bool filter_fullfilled();
-	void empty_filter(const ChargingStation& charging_station);
+	void empty_filter();
 	void fill_filter();
 
 	void place_on_map();

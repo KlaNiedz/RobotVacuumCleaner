@@ -225,6 +225,7 @@ void Map::drawAllObstacles()
 
 void Map::clean(int x, int y)
 {
+
 	placeObject(y, x, IDType::Clean);
 	CleanSquare clean_square(x, y, IDType::Clean);
 	Cleaned.push_back(clean_square);

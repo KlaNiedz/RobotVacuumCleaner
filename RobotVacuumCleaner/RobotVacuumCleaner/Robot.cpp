@@ -120,10 +120,19 @@ bool Robot::battery_low() {
 }
 
 void Robot::fill_filter() {
-	int current_level = filter.getFillLevel();
-	if (current_level < 100) {
-		filter.setFillLevel(current_level + 1);
-	}
+		int current_level = filter.getFillLevel();
+		if (current_level < 100) {
+			filter.setFillLevel(current_level + 1);
+		}
+
+}
+
+void Robot::charge_battery() {
+	battery.setLevel(100);
+}
+
+void Robot::empty_filter() {
+	filter.setFillLevel(0);
 }
 
 void Robot::place_on_map()
@@ -141,38 +150,86 @@ void Robot::draw()
 void Robot::move_right()
 {
 	body = Vector2Add(body, direction_right);
-	map->clean(x_coord, y_coord);
-	x_coord = body.x;
-	y_coord = body.y;
+	int new_x = body.x;
+	int new_y = body.y;
+	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+		fill_filter(); // Fill filter if the cell is dirty
+	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
+	x_coord = new_x;
+	y_coord = new_y;
 	place_on_map();
+	map->clean(x_coord, y_coord);
 
 }
 
 void Robot::move_left()
 {
 	body = Vector2Add(body, direction_left);
-	map->clean(x_coord, y_coord);
-	x_coord = body.x;
-	y_coord = body.y;
+	int new_x = body.x;
+	int new_y = body.y;
+	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+		fill_filter(); // Fill filter if the cell is dirty
+	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) {
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
+	x_coord = new_x;
+	y_coord = new_y;
 	place_on_map();
+	map->clean(x_coord, y_coord);
 }
 
 void Robot::move_up()
 {
 	body = Vector2Add(body, direction_up);
-	map->clean(x_coord, y_coord);
-	x_coord = body.x;
-	y_coord = body.y;
+	int new_x = body.x;
+	int new_y = body.y;
+	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+		fill_filter(); // Fill filter if the cell is dirty
+	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
+	x_coord = new_x;
+	y_coord = new_y;
 	place_on_map();
+	map->clean(x_coord, y_coord);
 }
 
 void Robot::move_down()
 {
 	body = Vector2Add(body, direction_down);
-	map->clean(x_coord, y_coord);
-	x_coord = body.x;
-	y_coord = body.y;
+	int new_x = body.x;
+	int new_y = body.y;
+	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+		fill_filter(); // Fill filter if the cell is dirty
+	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
+	x_coord = new_x;
+	y_coord = new_y;
 	place_on_map();
+	map->clean(x_coord, y_coord);
 }
 
 
@@ -180,14 +237,3 @@ bool Robot::filter_fullfilled() {
 	return filter.getFillLevel() >= 85;
 }
 
-void Robot::charge_battery(const ChargingStation& charging_station) {
-	if (get_x() == charging_station.getX() && get_y() == charging_station.getY()) {
-		battery.setLevel(100);
-	}
-}
-
-void Robot::empty_filter(const ChargingStation& charging_station) {
-	if (get_x() == charging_station.getX() && get_y() == charging_station.getY()) {
-		filter.setFillLevel(0);
-	}
-}
