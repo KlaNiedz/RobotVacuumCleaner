@@ -137,8 +137,12 @@ void Robot::empty_filter() {
 
 void Robot::place_on_map()
 {
-	map->placeObject(y_coord, x_coord, repr);
+	IDType currentCellType = map->getXY(y_coord, x_coord);
+	if (currentCellType != IDType::ChargingStation) {
+		map->placeObject(y_coord, x_coord, repr);
+	}
 }
+
 
 void Robot::draw()
 {
@@ -152,21 +156,31 @@ void Robot::move_right()
 	body = Vector2Add(body, direction_right);
 	int new_x = body.x;
 	int new_y = body.y;
-	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+
+	IDType cellType = map->getXY(new_y, new_x);
+
+	if (cellType == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
 
 	discharge_battery(); // Discharge battery
 
-	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+	if (cellType == IDType::ChargingStation) {
 		charge_battery(); // Charge the battery
 		empty_filter();
 	}
+
 	x_coord = new_x;
 	y_coord = new_y;
-	place_on_map();
-	map->clean(x_coord, y_coord);
 
+	place_on_map();
+
+	if (cellType == IDType::ChargingStation) {
+		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
+	}
+	else {
+		map->clean(x_coord, y_coord);
+	}
 }
 
 void Robot::move_left()
@@ -174,20 +188,31 @@ void Robot::move_left()
 	body = Vector2Add(body, direction_left);
 	int new_x = body.x;
 	int new_y = body.y;
-	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+
+	IDType cellType = map->getXY(new_y, new_x);
+
+	if (cellType == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
 
 	discharge_battery(); // Discharge battery
 
-	if (map->getXY(new_y, new_x) == IDType::ChargingStation) {
+	if (cellType == IDType::ChargingStation) {
 		charge_battery(); // Charge the battery
 		empty_filter();
 	}
+
 	x_coord = new_x;
 	y_coord = new_y;
+
 	place_on_map();
-	map->clean(x_coord, y_coord);
+
+	if (cellType == IDType::ChargingStation) {
+		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
+	}
+	else {
+		map->clean(x_coord, y_coord);
+	}
 }
 
 void Robot::move_up()
@@ -195,20 +220,31 @@ void Robot::move_up()
 	body = Vector2Add(body, direction_up);
 	int new_x = body.x;
 	int new_y = body.y;
-	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+
+	IDType cellType = map->getXY(new_y, new_x);
+
+	if (cellType == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
 
 	discharge_battery(); // Discharge battery
 
-	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+	if (cellType == IDType::ChargingStation) {
 		charge_battery(); // Charge the battery
 		empty_filter();
 	}
+
 	x_coord = new_x;
 	y_coord = new_y;
+
 	place_on_map();
-	map->clean(x_coord, y_coord);
+
+	if (cellType == IDType::ChargingStation) {
+		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
+	}
+	else {
+		map->clean(x_coord, y_coord);
+	}
 }
 
 void Robot::move_down()
@@ -216,20 +252,31 @@ void Robot::move_down()
 	body = Vector2Add(body, direction_down);
 	int new_x = body.x;
 	int new_y = body.y;
-	if (map->getXY(new_y, new_x) == IDType::Dirty) {
+
+	IDType cellType = map->getXY(new_y, new_x);
+
+	if (cellType == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
 
 	discharge_battery(); // Discharge battery
 
-	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+	if (cellType == IDType::ChargingStation) {
 		charge_battery(); // Charge the battery
 		empty_filter();
 	}
+
 	x_coord = new_x;
 	y_coord = new_y;
+
 	place_on_map();
-	map->clean(x_coord, y_coord);
+
+	if (cellType == IDType::ChargingStation) {
+		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
+	}
+	else {
+		map->clean(x_coord, y_coord);
+	}
 }
 
 
