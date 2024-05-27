@@ -127,6 +127,13 @@ void Robot::fill_filter() {
 
 }
 
+void Robot::charge_battery() {
+	battery.setLevel(100);
+}
+
+void Robot::empty_filter() {
+	filter.setFillLevel(0);
+}
 
 void Robot::place_on_map()
 {
@@ -148,11 +155,18 @@ void Robot::move_right()
 	if (map->getXY(new_y, new_x) == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
 	x_coord = new_x;
 	y_coord = new_y;
 	place_on_map();
-	discharge_battery(); // Discharge battery
 	map->clean(x_coord, y_coord);
+
 }
 
 void Robot::move_left()
@@ -163,10 +177,16 @@ void Robot::move_left()
 	if (map->getXY(new_y, new_x) == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) {
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
 	x_coord = new_x;
 	y_coord = new_y;
 	place_on_map();
-	discharge_battery(); // Discharge battery
 	map->clean(x_coord, y_coord);
 }
 
@@ -178,10 +198,16 @@ void Robot::move_up()
 	if (map->getXY(new_y, new_x) == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
 	x_coord = new_x;
 	y_coord = new_y;
 	place_on_map();
-	discharge_battery(); // Discharge battery
 	map->clean(x_coord, y_coord);
 }
 
@@ -193,27 +219,21 @@ void Robot::move_down()
 	if (map->getXY(new_y, new_x) == IDType::Dirty) {
 		fill_filter(); // Fill filter if the cell is dirty
 	}
+
+	discharge_battery(); // Discharge battery
+
+	if (map->getXY(new_y, new_x) == IDType::ChargingStation) { // SprawdŸ, czy robot znajduje siê na stacji ³adowania
+		charge_battery(); // Charge the battery
+		empty_filter();
+	}
 	x_coord = new_x;
 	y_coord = new_y;
 	place_on_map();
-	discharge_battery(); // Discharge battery
 	map->clean(x_coord, y_coord);
 }
-
 
 
 bool Robot::filter_fullfilled() {
 	return filter.getFillLevel() >= 85;
 }
 
-void Robot::charge_battery(const ChargingStation& charging_station) {
-	if (get_x() == charging_station.getX() && get_y() == charging_station.getY()) {
-		battery.setLevel(100);
-	}
-}
-
-void Robot::empty_filter(const ChargingStation& charging_station) {
-	if (get_x() == charging_station.getX() && get_y() == charging_station.getY()) {
-		filter.setFillLevel(0);
-	}
-}
