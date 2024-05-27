@@ -13,6 +13,7 @@ enum class BasicColor {
     Brown,
     Bluesih,
     White,
+    Red,
 };
 
 extern std::map<BasicColor, Color> colorMap;
