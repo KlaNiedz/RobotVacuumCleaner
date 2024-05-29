@@ -7,7 +7,7 @@ class LeftSideSensor : public SideSensor {
 //	Direction heading;
 //	Map map;
 public:
-	LeftSideSensor(const Map& m, int x = 0, int y = 0, Direction h = Direction::North, int r = 1);
+	LeftSideSensor(const Map& m = Map(), int x = 0, int y = 0, Direction h = Direction::North, int r = 1);
 
 	bool obstacle_in_range() const override;
 	bool wall_detected() const override;

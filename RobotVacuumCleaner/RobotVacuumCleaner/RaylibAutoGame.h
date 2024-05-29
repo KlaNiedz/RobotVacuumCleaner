@@ -4,7 +4,7 @@
 #include "Robot.h"
 #include "RaylibGame.h"
 
-class RaylibManualGame : public RaylibGame {
+class RaylibAutoGame : public RaylibGame {
 public:
 	void movement() override;
 };

@@ -10,12 +10,12 @@ Robot::Robot(
 	Direction h,
 	IDType r,
 	Battery b,
-	Filter f
-	//FrontSensor fs,
-	//RightSideSensor rs,
-	//LeftSideSensor ls,
+	Filter f,
+	FrontSensor fs,
+	RightSideSensor rs,
+	LeftSideSensor ls
 	)
-	: map(map), x_coord(x), y_coord(y), heading(h), repr(r), battery(b), filter(f), front_sensor(*map, x, y, h), r_sensor(*map, x, y, h), l_sensor(*map, x, y, h, 3)
+	: map(map), x_coord(x), y_coord(y), heading(h), repr(r), battery(b), filter(f), front_sensor(*map, x, y, h, 3), r_sensor(*map, x, y, h, 1), l_sensor(*map, x, y, h, 1)
 {
 	if (map == nullptr)
 	{
@@ -34,9 +34,9 @@ Direction Robot::get_heading() const { return heading; }
 IDType Robot::get_repr() const { return repr; }
 Battery Robot::get_battery() const { return battery; }
 Filter Robot::get_filter() const { return filter; }
-//FrontSensor Robot::get_f_sensor() const { return front_sensor; }
-//RightSideSensor Robot::get_r_sensor() const { return r_sensor; }
-//LeftSideSensor Robot::get_l_sensor() const { return l_sensor; }
+FrontSensor Robot::get_f_sensor() { return front_sensor; }
+RightSideSensor Robot::get_r_sensor() { return r_sensor; }
+LeftSideSensor Robot::get_l_sensor() { return l_sensor; }
 
 
 void Robot::set_x(int new_x) { x_coord = new_x; }

@@ -32,10 +32,10 @@ public:
 		Direction h = Direction::North,
 		IDType r = IDType::Benek,
 		Battery b = Battery(),
-		Filter f = Filter()
-		//FrontSensor fs = FrontSensor(),
-		//RightSideSensor rs = RightSideSensor(),
-		//LeftSideSensor ls = LeftSideSensor(), 
+		Filter f = Filter(),
+		FrontSensor fs = FrontSensor(),
+		RightSideSensor rs = RightSideSensor(),
+		LeftSideSensor ls = LeftSideSensor()
 	);
 
 	Vector2 body = { static_cast<float>(x_coord), static_cast<float>(y_coord)};
@@ -55,9 +55,9 @@ public:
 	IDType get_repr() const;
 	Battery get_battery() const;
 	Filter get_filter() const;
-	//FrontSensor get_f_sensor() const;
-	//RightSideSensor get_r_sensor() const;
-	//LeftSideSensor get_l_sensor() const;
+	FrontSensor get_f_sensor();
+	RightSideSensor get_r_sensor();
+	LeftSideSensor get_l_sensor();
 
 	//Setters
 	void set_x(int new_x);
