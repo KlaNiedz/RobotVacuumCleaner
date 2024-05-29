@@ -78,6 +78,9 @@ public:
 	void go_right();
 	void go_left();
 	void move(int new_x, int new_y);
+	void take_step();
+	void turn_right();
+	void turn_left();
 
 	//Bateria 
 	void discharge_battery();

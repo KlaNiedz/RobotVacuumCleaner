@@ -119,6 +119,65 @@ void Robot::move(int new_x, int new_y)
 	map->placeObject(y_coord, x_coord, repr); // Place robot in new position
 }
 
+void Robot::take_step() {
+	switch (get_heading()) {
+	case Direction::North:
+		go_up();
+		break;
+
+	case Direction::East:
+		go_right();
+		break;
+
+	case Direction::South:
+		go_down();
+		break;
+
+	case Direction::West:
+		go_left();
+		break;
+	}
+}
+
+void Robot::turn_right() {
+	switch (get_heading()) {
+	case Direction::North:
+		set_heading(Direction::East);
+		break;
+
+	case Direction::East:
+		set_heading(Direction::South);
+		break;
+
+	case Direction::South:
+		set_heading(Direction::West);
+		break;
+
+	case Direction::West:
+		set_heading(Direction::North);
+		break;
+	}
+}
+
+void Robot::turn_left() {
+	switch (get_heading()) {
+	case Direction::North:
+		set_heading(Direction::West);
+		break;
+
+	case Direction::East:
+		set_heading(Direction::North);
+		break;
+
+	case Direction::South:
+		set_heading(Direction::East);
+		break;
+
+	case Direction::West:
+		set_heading(Direction::South);
+		break;
+	}
+}
 
 void Robot::discharge_battery() {
 	// Roz³adowanie baterii o pewn¹ wartoœæ za ka¿dy krok
