@@ -29,7 +29,7 @@ public:
 		Map* map,
 		int x = 0,
 		int y = 0,
-		Direction h = Direction::North,
+		Direction h = Direction::East,
 		IDType r = IDType::Benek,
 		Battery b = Battery(),
 		Filter f = Filter(),
@@ -81,6 +81,9 @@ public:
 	void take_step();
 	void turn_right();
 	void turn_left();
+	void turn_right_back();
+	void turn_left_back();
+	void avoid_obstacle();
 
 	//Bateria 
 	void discharge_battery();

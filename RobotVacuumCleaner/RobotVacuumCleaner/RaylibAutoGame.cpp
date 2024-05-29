@@ -1,42 +1,17 @@
 #include "RaylibAutoGame.h"
+#include <chrono>
+#include <thread>
 
 void RaylibAutoGame::movement() {
-	switch (myRobot.get_heading()) {
-	case Direction::North:
-		if (myRobot.get_f_sensor().wall_detected() || myRobot.get_f_sensor().get_dist_to_stop() == 0) {
-			myRobot.go_right();
-		}
+	if (myRobot.get_f_sensor().wall_detected() || myRobot.get_f_sensor().get_dist_to_stop() == 0) {
+		if (myRobot.get_heading() == Direction::East || myRobot.get_heading() == Direction::North)
+			myRobot.turn_right_back();
 		else {
-			myRobot.go_up();
+			myRobot.turn_left_back();
 		}
-		break;
-
-	case Direction::South:
-		if (myRobot.get_f_sensor().wall_detected() || myRobot.get_f_sensor().get_dist_to_stop() == 0) {
-			myRobot.go_left();
-		}
-		else {
-			myRobot.go_down();
-		}
-		break;
-
-	case Direction::East:
-		if (myRobot.get_f_sensor().wall_detected() || myRobot.get_f_sensor().get_dist_to_stop() == 0) {
-			myRobot.go_down();
-		}
-		else {
-			myRobot.go_right();
-		}
-		break;
-
-	case Direction::West:
-		if (myRobot.get_f_sensor().wall_detected() || myRobot.get_f_sensor().get_dist_to_stop() == 0) {
-			myRobot.go_up();
-		}
-		else {
-			myRobot.go_left();
-		}
-		break;
-
+	}
+	else {
+		myRobot.take_step();
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 }

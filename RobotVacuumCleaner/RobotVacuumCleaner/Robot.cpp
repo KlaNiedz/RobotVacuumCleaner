@@ -179,6 +179,22 @@ void Robot::turn_left() {
 	}
 }
 
+void Robot::turn_right_back() {
+	turn_right();
+	take_step();
+	turn_right();
+}
+
+void Robot::turn_left_back() {
+	turn_left();
+	take_step();
+	turn_left();
+}
+
+void Robot::avoid_obstacle() {
+	
+}
+
 void Robot::discharge_battery() {
 	// Roz³adowanie baterii o pewn¹ wartoœæ za ka¿dy krok
 	int current_level = battery.getLevel();
