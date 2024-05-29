@@ -61,9 +61,13 @@ void Robot::update_sensors() {
 void Robot::go_up() {
 	set_heading(Direction::North);
 	update_sensors();
-	if (not front_sensor.wall_detected() && front_sensor.get_dist_to_stop() > 0 && battery.getLevel()>0) {
+	if (not front_sensor.wall_detected() && front_sensor.get_dist_to_stop() > 0 && battery.getLevel() > 0) {
 		move_up();
 	}
+	else {
+		std::cout << "Cannot move up!!!" << std::endl;
+	}
+	
 }
 
 void Robot::go_down() {
@@ -71,6 +75,9 @@ void Robot::go_down() {
 	update_sensors();
 	if (not front_sensor.wall_detected() && front_sensor.get_dist_to_stop() > 0 && battery.getLevel() > 0) {
 		move_down();
+	}
+	else {
+		std::cout << "Cannot move down!!!" << std::endl;
 	}
 }
 
@@ -80,6 +87,9 @@ void Robot::go_left() {
 	if (not front_sensor.wall_detected() && front_sensor.get_dist_to_stop() > 0 && battery.getLevel() > 0) {
 		move_left();
 	}
+	else {
+		std::cout << "Cannot move left!!!" << std::endl;
+	}
 }
 
 void Robot::go_right() {
@@ -87,6 +97,9 @@ void Robot::go_right() {
 	update_sensors();
 	if (not front_sensor.wall_detected() && front_sensor.get_dist_to_stop() > 0 && battery.getLevel() > 0) {
 		move_right();
+	}
+	else {
+		std::cout << "Cannot move right!!!" << std::endl;
 	}
 }
 

@@ -2,9 +2,8 @@
 #include "Constants.h"
 #include "raylib.h"
 
+Font font = LoadFontEx("RobotVacuumCleaner\Font\slkscr.ttf", 64, 0, 0);
 void RaylibGame::draw() {
-
-	Font font = LoadFontEx("RobotVacuumCleaner\Font\slkscr.ttf", 64, 0, 0);
 
 	myMap.Draw();
 	myMap.drawAllObstacles();
