@@ -139,11 +139,16 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="RaylibAutoGame.cpp" />
+    <ClCompile Include="RaylibGame.cpp" />
+    <ClCompile Include="RaylibManualGame.cpp" />
     <ClCompile Include="RightSideSensor.cpp" />
     <ClCompile Include="Robot.cpp" />
     <ClCompile Include="RobotVacuumCleaner.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="SideSensor.cpp" />
+    <ClCompile Include="TerminalGame.cpp" />
+    <ClCompile Include="TerminalManualGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battery.h" />
@@ -156,13 +161,19 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="IDType.h" />
     <ClInclude Include="LeftSideSensor.h" />
+    <ClInclude Include="RaylibAutoGame.h" />
+    <ClInclude Include="RaylibGame.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="RaylibManualGame.h" />
     <ClInclude Include="RightSideSensor.h" />
     <ClInclude Include="Robot.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="SideSensor.h" />
+    <ClInclude Include="TerminalAutoGame.h" />
+    <ClInclude Include="TerminalGame.h" />
+    <ClInclude Include="TerminalManualGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
