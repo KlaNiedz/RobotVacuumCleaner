@@ -56,9 +56,10 @@ void RaylibGame::run() {
 		ClearBackground(colorMap[BasicColor::Bluesih]);
 
 		/*myMap.drawAllObstacles();*/
+		movement();
 		draw();
 
-		movement();
+		
 		
 
 		//game.update();

@@ -2,7 +2,8 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "Constants.h"
-
+#include <thread>
+#include <chrono>
 Robot::Robot(
 	Map* map,
 	int x,
@@ -137,6 +138,8 @@ void Robot::take_step() {
 		go_left();
 		break;
 	}
+	update_sensors();
+	std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }
 
 void Robot::turn_right() {
@@ -157,6 +160,7 @@ void Robot::turn_right() {
 		set_heading(Direction::North);
 		break;
 	}
+	update_sensors();
 }
 
 void Robot::turn_left() {
@@ -177,6 +181,7 @@ void Robot::turn_left() {
 		set_heading(Direction::South);
 		break;
 	}
+	update_sensors();
 }
 
 void Robot::turn_right_back() {
@@ -192,7 +197,22 @@ void Robot::turn_left_back() {
 }
 
 void Robot::avoid_obstacle() {
-	
+	int go_back = 0;
+	turn_right();
+	while (get_l_sensor().obstacle_in_range()) {
+		take_step();
+		go_back++;
+	}
+	turn_left();
+	take_step();
+	while (get_l_sensor().obstacle_in_range()) {
+		take_step();
+	}
+	turn_left();
+	for (go_back; go_back > 0; go_back--) {
+		take_step();
+	}
+	turn_right();
 }
 
 void Robot::discharge_battery() {
