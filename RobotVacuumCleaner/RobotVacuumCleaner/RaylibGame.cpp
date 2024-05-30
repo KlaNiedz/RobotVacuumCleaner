@@ -58,6 +58,10 @@ void RaylibGame::run() {
 		/*myMap.drawAllObstacles();*/
 		movement();
 		draw();
+		if (myRobot.get_battery().getLevel() == 0) {
+			std::cout << "Robot discharged completely! End of the simulation.\n";
+			break;
+		}
 
 		
 		
