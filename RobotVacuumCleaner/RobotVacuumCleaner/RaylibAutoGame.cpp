@@ -2,20 +2,7 @@
 
 void RaylibAutoGame::movement() {
 	if (myRobot.battery_low() || myRobot.filter_fullfilled()) {
-		if (myRobot.get_x() != 0 && myRobot.get_y() != 0) {
-				myRobot.set_heading(Direction::North);
-				myRobot.take_step();
-				myRobot.turn_left();
-				myRobot.take_step();
-		}
-		else if (myRobot.get_x() == 0 && myRobot.get_y() != 0) {
-			myRobot.set_heading(Direction::North);
-			myRobot.take_step();
-		}
-		else if (myRobot.get_x() != 0 && myRobot.get_y() == 0) {
-			myRobot.set_heading(Direction::West);
-			myRobot.take_step();
-		}
+		myRobot.come_back_to_base();
 	}
 	else {
 		if (myRobot.get_f_sensor().wall_detected()) {

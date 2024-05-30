@@ -228,6 +228,24 @@ void Robot::avoid_obstacle() {
 	}
 }
 
+void Robot::come_back_to_base() {
+	std::cout << "Coming back to the charging station...\n";
+	if (get_x() != 0 && get_y() != 0) {
+		set_heading(Direction::North);
+		take_step();
+		turn_left();
+		take_step();
+	}
+	else if (get_x() == 0 && get_y() != 0) {
+		set_heading(Direction::North);
+		take_step();
+	}
+	else if (get_x() != 0 && get_y() == 0) {
+		set_heading(Direction::West);
+		take_step();
+	}
+}
+
 void Robot::discharge_battery() {
 	if (step_count % 2 == 0) { // Roz³adowanie baterii co drugi krok
 		int current_level = battery.getLevel();
@@ -243,7 +261,7 @@ bool Robot::battery_low() {
 }
 
 void Robot::fill_filter() {
-	if (step_count % 2 == 0) { // Nape³nianie filtra co drugi krok
+	if (step_count % 1 == 0) { // Nape³nianie filtra co drugi krok
 		int current_level = filter.getFillLevel();
 		if (current_level < 100) {
 			filter.setFillLevel(current_level + 1);
@@ -254,10 +272,12 @@ void Robot::fill_filter() {
 
 void Robot::charge_battery() {
 	battery.setLevel(100);
+	std::cout << "Battery charged!\n";
 }
 
 void Robot::empty_filter() {
 	filter.setFillLevel(0);
+	std::cout << "Filter emptied!\n";
 }
 
 void Robot::place_on_map()
