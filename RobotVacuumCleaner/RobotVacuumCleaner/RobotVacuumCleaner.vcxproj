@@ -147,6 +147,7 @@
     <ClCompile Include="RobotVacuumCleaner.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="SideSensor.cpp" />
+    <ClCompile Include="TerminalAutoGame.cpp" />
     <ClCompile Include="TerminalGame.cpp" />
     <ClCompile Include="TerminalManualGame.cpp" />
   </ItemGroup>

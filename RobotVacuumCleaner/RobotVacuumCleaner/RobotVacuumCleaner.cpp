@@ -34,11 +34,11 @@ int main()
 		RaylibAutoGame game = RaylibAutoGame();
 		game.run();
 	}
-	//else if (choice1 == 2 && choice2 == 2)
-	//{
-	//	TerminalAutoGame game = TerminalAutoGame();
-	//	game.run();
-	//}
+	else if (choice1 == 2 && choice2 == 2)
+	{
+		TerminalAutoGame game = TerminalAutoGame();
+		game.run();
+	}
 	else
 	{
 		std::cout << "Invalid input. If Graphic type 1, if in Terminal type 2: " << std::endl;
