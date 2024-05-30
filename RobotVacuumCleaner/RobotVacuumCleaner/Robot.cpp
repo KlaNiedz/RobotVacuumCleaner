@@ -261,11 +261,9 @@ bool Robot::battery_low() {
 }
 
 void Robot::fill_filter() {
-	if (step_count % 1 == 0) { // Nape³nianie filtra co drugi krok
-		int current_level = filter.getFillLevel();
-		if (current_level < 100) {
-			filter.setFillLevel(current_level + 1);
-		}
+	int current_level = filter.getFillLevel();
+	if (current_level < 100) {
+		filter.setFillLevel(current_level + 1);
 	}
 }
 
@@ -324,7 +322,7 @@ void Robot::move_right()
 	{
 		map->clean(x_coord, y_coord);
 	}
-	else {
+	else if (cellType == IDType::ChargingStation) {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
 	step_count++;
@@ -358,7 +356,7 @@ void Robot::move_left()
 	{
 		map->clean(x_coord, y_coord);
 	}
-	else {
+	else if (cellType == IDType::ChargingStation) {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
 	step_count++;
@@ -393,7 +391,7 @@ void Robot::move_up()
 	{
 		map->clean(x_coord, y_coord);
 	}
-	else {
+	else if (cellType == IDType::ChargingStation) {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
 	step_count++;
@@ -428,7 +426,7 @@ void Robot::move_down()
 	{
 		map->clean(x_coord, y_coord);
 	}
-	else {
+	else if (cellType == IDType::ChargingStation) {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
 	step_count++;
