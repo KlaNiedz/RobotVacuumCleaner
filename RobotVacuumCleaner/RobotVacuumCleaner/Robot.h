@@ -17,6 +17,7 @@ class Robot {
 	IDType repr;
 	Battery battery;
 	Filter filter;
+	int step_count;
 	
 	//Sensors
 	FrontSensor front_sensor;
@@ -33,6 +34,7 @@ public:
 		IDType r = IDType::Benek,
 		Battery b = Battery(),
 		Filter f = Filter(),
+		int sc = 0,
 		FrontSensor fs = FrontSensor(),
 		RightSideSensor rs = RightSideSensor(),
 		LeftSideSensor ls = LeftSideSensor()
@@ -55,6 +57,7 @@ public:
 	IDType get_repr() const;
 	Battery get_battery() const;
 	Filter get_filter() const;
+	int get_step_count();
 	FrontSensor get_f_sensor();
 	RightSideSensor get_r_sensor();
 	LeftSideSensor get_l_sensor();
@@ -66,6 +69,7 @@ public:
 	void set_repr(IDType new_repr);
 	void set_battery(Battery new_battery);
 	void set_filter(Filter new_filter);
+	void set_step_count(int step_count);
 	//void set_f_sensor(FrontSensor new_f_sensor);
 	//void set_r_sensor(RightSideSensor new_r_sensor);
 	//void set_l_sensor(LeftSideSensor new_l_sensor);
