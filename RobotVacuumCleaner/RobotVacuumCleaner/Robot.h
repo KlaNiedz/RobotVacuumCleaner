@@ -88,6 +88,7 @@ public:
 	void turn_right_back();
 	void turn_left_back();
 	void avoid_obstacle();
+	void make_pause();
 
 	//Bateria 
 	void discharge_battery();

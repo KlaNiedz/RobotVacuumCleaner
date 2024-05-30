@@ -122,6 +122,9 @@ void Robot::move(int new_x, int new_y)
 	y_coord = new_y;
 	map->placeObject(y_coord, x_coord, repr); // Place robot in new position
 }
+void Robot::make_pause() {
+	std::this_thread::sleep_for(std::chrono::milliseconds(200));
+}
 
 void Robot::take_step() {
 	switch (get_heading()) {
@@ -142,7 +145,7 @@ void Robot::take_step() {
 		break;
 	}
 	update_sensors();
-	std::this_thread::sleep_for(std::chrono::milliseconds(200));
+	make_pause();
 }
 
 void Robot::turn_right() {
@@ -202,20 +205,27 @@ void Robot::turn_left_back() {
 void Robot::avoid_obstacle() {
 	int go_back = 0;
 	turn_right();
-	while (get_l_sensor().obstacle_in_range()) {
+	if (get_l_sensor().obstacle_in_range()) {
 		take_step();
 		go_back++;
 	}
-	turn_left();
-	take_step();
-	while (get_l_sensor().obstacle_in_range()) {
+	else {
+		turn_left();
 		take_step();
+		if (get_l_sensor().obstacle_in_range()) {
+			take_step();
+		}
+		else {
+			turn_left();
+			if (go_back != 0) {
+				take_step();
+				go_back--;
+			}
+			else {
+				turn_right();
+			}
+		}
 	}
-	turn_left();
-	for (go_back; go_back > 0; go_back--) {
-		take_step();
-	}
-	turn_right();
 }
 
 void Robot::discharge_battery() {
