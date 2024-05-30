@@ -12,11 +12,12 @@ Robot::Robot(
 	IDType r,
 	Battery b,
 	Filter f,
+	int sc,
 	FrontSensor fs,
 	RightSideSensor rs,
 	LeftSideSensor ls
 	)
-	: map(map), x_coord(x), y_coord(y), heading(h), repr(r), battery(b), filter(f), front_sensor(*map, x, y, h, 3), r_sensor(*map, x, y, h, 1), l_sensor(*map, x, y, h, 1)
+	: map(map), x_coord(x), y_coord(y), heading(h), repr(r), battery(b), filter(f),step_count(sc), front_sensor(*map, x, y, h, 3), r_sensor(*map, x, y, h, 1), l_sensor(*map, x, y, h, 1)
 {
 	if (map == nullptr)
 	{
@@ -35,6 +36,7 @@ Direction Robot::get_heading() const { return heading; }
 IDType Robot::get_repr() const { return repr; }
 Battery Robot::get_battery() const { return battery; }
 Filter Robot::get_filter() const { return filter; }
+int Robot::get_step_count() { return step_count; }
 FrontSensor Robot::get_f_sensor() { return front_sensor; }
 RightSideSensor Robot::get_r_sensor() { return r_sensor; }
 LeftSideSensor Robot::get_l_sensor() { return l_sensor; }
@@ -46,6 +48,7 @@ void Robot::set_heading(Direction new_heading) { heading = new_heading; }
 void Robot::set_repr(IDType new_repr) { repr = new_repr; }
 void Robot::set_battery(Battery new_battery) { battery = new_battery; }
 void Robot::set_filter(Filter new_filter) { filter = new_filter; }
+void Robot::set_step_count(int new_sc) { step_count = new_sc; }
 //void Robot::set_f_sensor(FrontSensor new_f_sensor) { front_sensor = new_f_sensor; }
 //void Robot::set_r_sensor(RightSideSensor new_r_sensor) { r_sensor = new_r_sensor; }
 //void Robot::set_l_sensor(LeftSideSensor new_l_sensor) { l_sensor = new_l_sensor; }
@@ -216,24 +219,28 @@ void Robot::avoid_obstacle() {
 }
 
 void Robot::discharge_battery() {
-	// Roz³adowanie baterii o pewn¹ wartoœæ za ka¿dy krok
-	int current_level = battery.getLevel();
-	if (current_level > 0) {
-		battery.setLevel(current_level - 1);
+	if (step_count % 2 == 0) { // Roz³adowanie baterii co drugi krok
+		int current_level = battery.getLevel();
+		if (current_level > 0) {
+			battery.setLevel(current_level - 1);
+		}
 	}
 }
+
 
 bool Robot::battery_low() {
 	return battery.getLevel() <= 15;
 }
 
 void Robot::fill_filter() {
+	if (step_count % 2 == 0) { // Nape³nianie filtra co drugi krok
 		int current_level = filter.getFillLevel();
 		if (current_level < 100) {
 			filter.setFillLevel(current_level + 1);
 		}
-
+	}
 }
+
 
 void Robot::charge_battery() {
 	battery.setLevel(100);
@@ -290,6 +297,7 @@ void Robot::move_right()
 	else {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
+	step_count++;
 }
 
 void Robot::move_left()
@@ -323,6 +331,8 @@ void Robot::move_left()
 	else {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
+	step_count++;
+
 }
 
 void Robot::move_up()
@@ -356,6 +366,8 @@ void Robot::move_up()
 	else {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
+	step_count++;
+
 }
 
 void Robot::move_down()
@@ -389,6 +401,8 @@ void Robot::move_down()
 	else {
 		map->placeObject(y_coord, x_coord, IDType::ChargingStation);
 	}
+	step_count++;
+
 }
 
 
