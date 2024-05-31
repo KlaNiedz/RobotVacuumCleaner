@@ -77,34 +77,6 @@ void Map::placeObject(int y_cor, int x_cor, IDType repr)
 	MapArray[y_cor][x_cor] = repr;
 }
 
-//void Map::setHeightandWidth(int width, int height)
-//{
-//	for (int i = 0; i < Height; i++)
-//	{
-//		delete[] MapArray[i];
-//	}
-//	delete[] MapArray;
-//	Height = static_cast<int>(round(height / 20.0));
-//	Width = static_cast<int>(round(width / 20.0));
-//	MapArray = new IDType* [Height];
-//	for (int i = 0; i < Height; i++)
-//	{
-//		MapArray[i] = new IDType[Width];
-//	}
-//
-//	// creating an empty map
-//	for (int y = 0; y < Height; y++)
-//	{
-//		for (int x = 0; x < Width; x++)
-//		{
-//			MapArray[y][x] = IDType::Dirty;
-//		}
-//	}
-//	generateObstacles();
-//	// putting Charging Station into map
-//	ChargingStation charstat(0, 0, IDType::ChargingStation);
-//	MapArray[charstat.getY()][charstat.getX()] = charstat.getID();
-//}
 
 void Map::showMap()
 {
@@ -181,7 +153,7 @@ void Map::generateObstacles()
 		}
 	}
 }
-
+// Adding obstacle on map
 void Map::addObject(int y_cor, int x_cor, int height, int width, IDType repr)
 {
 	try {
@@ -194,11 +166,12 @@ void Map::addObject(int y_cor, int x_cor, int height, int width, IDType repr)
 			}
 		}
 	}
-	catch (int myNum) {
-		std::cout << "Wrong coordinates:" << myNum << ". Height of the map : " << Height << " Width of the map : " << Width << std::endl;
+	catch (const std::out_of_range& e){
+		std::cout << "Wrong coordinates:" << e.what() << ". Height of the map : " << Height << " Width of the map : " << Width << std::endl;
 	}
 }
 
+// Drawing obstacle on graphic map
 void Map::addObstacle(Obstacle obs)
 {
 	obs.draw();
@@ -223,6 +196,7 @@ void Map::drawAllObstacles()
 	}
 }
 
+// Adding clean squares on map
 void Map::clean(int x, int y)
 {
 
@@ -239,23 +213,10 @@ void Map::drawCleaned()
 	}
 }
 
+// Drawing Charging station
 void Map::drawCharStat()
 {
 	CharStat.draw();
 }
 
-
-// calculating how many squares are without obstacle
-//int Map::calcEmpty(int col, int length)
-//{
-//	int sum = 0;
-//	for (int i = 0; i < length; i++)
-//	{
-//		if (MapArray[col][i] == IDType::Dirty)
-//		{
-//			sum++;
-//		}
-//	}
-//	return sum;
-//}
 

@@ -12,6 +12,7 @@ enum class IDType {
 
 
 std::ostream& operator<<(std::ostream& os, const IDType& idtype);
+int to_int(const IDType& idtype);
 
 #endif // IDTYPE_H
 

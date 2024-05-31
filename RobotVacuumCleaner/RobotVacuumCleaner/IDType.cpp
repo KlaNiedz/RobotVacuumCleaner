@@ -22,3 +22,14 @@ std::ostream& operator<<(std::ostream& os, const IDType& idtype)
     }
     return os;
 }
+
+int to_int(const IDType& idtype) {
+    switch (idtype) {
+    case IDType::Dirty: return 0;
+    case IDType::Clean: return 1;
+    case IDType::ChargingStation: return 2;
+    case IDType::Obstacle: return 3;
+    case IDType::Benek: return 4;
+    default: return 9;
+    }
+}
