@@ -15,7 +15,7 @@ namespace FrontSensorTests
         TEST_METHOD(TestObstacleInRangeNorth)
         {
             // Initialize a 5x5 map with an obstacle at (1, 2)
-            Map map(5, 5);
+            Map map(100,100);
             map.placeObject(1, 2, IDType::Obstacle);
 
             // Create a FrontSensor at position (3, 2) facing North with range 3

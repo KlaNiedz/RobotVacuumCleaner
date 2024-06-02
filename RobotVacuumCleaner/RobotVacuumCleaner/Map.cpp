@@ -11,6 +11,9 @@ Map::Map(int height, int width)
 {
 	// one square is 20x20 cm
 	// height and width are represented in cm
+	if (height < 20 || width < 20) {
+		throw std::invalid_argument("Height and width must be at least 20 cm.");
+	}
 	Height = static_cast<int>(round(height/20.0));
 	Width = static_cast<int>(round(width/20.0));
 
