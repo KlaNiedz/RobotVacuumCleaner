@@ -162,10 +162,12 @@
     <ClCompile Include="..\RobotVacuumCleaner\Constants.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\FrontSensor.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\IDType.cpp" />
+    <ClCompile Include="..\RobotVacuumCleaner\LeftSideSensor.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\Map.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\MapObject.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\Obstacle.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\RightSideSensor.cpp" />
+    <ClCompile Include="..\RobotVacuumCleaner\Robot.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\Sensor.cpp" />
     <ClCompile Include="..\RobotVacuumCleaner\SideSensor.cpp" />
     <ClCompile Include="BatteryTest.cpp" />
@@ -173,6 +175,7 @@
     <ClCompile Include="CleanSquareTest.cpp" />
     <ClCompile Include="FilterTest.cpp" />
     <ClCompile Include="FrontSensorTest.cpp" />
+    <ClCompile Include="LeftSideSensorTest.cpp" />
     <ClCompile Include="MapTest.cpp" />
     <ClCompile Include="ObstacleTest.cpp" />
     <ClCompile Include="pch.cpp">
@@ -182,6 +185,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RightSideSensorTest.cpp" />
+    <ClCompile Include="RobotTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

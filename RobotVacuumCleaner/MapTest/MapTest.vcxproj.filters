@@ -69,10 +69,16 @@
     <ClCompile Include="..\RobotVacuumCleaner\FrontSensor.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="CleanSquareTest.cpp">
+    <ClCompile Include="LeftSideSensorTest.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="ObstacleTest.cpp">
+    <ClCompile Include="..\RobotVacuumCleaner\LeftSideSensor.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotTest.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\RobotVacuumCleaner\Robot.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
