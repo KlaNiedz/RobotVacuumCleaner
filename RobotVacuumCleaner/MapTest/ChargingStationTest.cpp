@@ -39,6 +39,5 @@ namespace ChargingStationTest
             std::string expected_output = "Charging Station ID: " + std::to_string(static_cast<int>(cs.getID())) + " at (5, 10)\n";
             Assert::AreEqual(expected_output, output);
         }
-        //TEST_METHOD(test_draw)
     };
 }

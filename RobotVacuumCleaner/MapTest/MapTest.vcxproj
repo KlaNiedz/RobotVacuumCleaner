@@ -170,9 +170,11 @@
     <ClCompile Include="..\RobotVacuumCleaner\SideSensor.cpp" />
     <ClCompile Include="BatteryTest.cpp" />
     <ClCompile Include="ChargingStationTest.cpp" />
+    <ClCompile Include="CleanSquareTest.cpp" />
     <ClCompile Include="FilterTest.cpp" />
     <ClCompile Include="FrontSensorTest.cpp" />
     <ClCompile Include="MapTest.cpp" />
+    <ClCompile Include="ObstacleTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
