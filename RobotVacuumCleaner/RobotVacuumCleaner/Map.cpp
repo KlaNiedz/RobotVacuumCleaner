@@ -94,7 +94,7 @@ void Map::showMap()
 // Randomly gererating obstacles on map. 
 void Map::generateObstacles()
 {
-	std::srand(std::time(nullptr));
+	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 	int num_obs = Height*Width/25;
 	std::vector<std::vector<bool>> occupied(Height, std::vector<bool>(Width, false));
 	occupied[CharStat.getY()][CharStat.getX()] = true;

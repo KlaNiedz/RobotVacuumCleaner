@@ -297,8 +297,8 @@ void Robot::draw()
 void Robot::move_right()
 {
 	body = Vector2Add(body, direction_right);
-	int new_x = body.x;
-	int new_y = body.y;
+	int new_x = static_cast<int>(body.x);
+	int new_y = static_cast<int>(body.y);
 
 	IDType cellType = map->getXY(new_y, new_x);
 
@@ -331,8 +331,8 @@ void Robot::move_right()
 void Robot::move_left()
 {
 	body = Vector2Add(body, direction_left);
-	int new_x = body.x;
-	int new_y = body.y;
+	int new_x = static_cast<int>(body.x);
+	int new_y = static_cast<int>(body.y);
 
 	IDType cellType = map->getXY(new_y, new_x);
 
@@ -366,8 +366,8 @@ void Robot::move_left()
 void Robot::move_up()
 {
 	body = Vector2Add(body, direction_up);
-	int new_x = body.x;
-	int new_y = body.y;
+	int new_x = static_cast<int>(body.x);
+	int new_y = static_cast<int>(body.y);
 
 	IDType cellType = map->getXY(new_y, new_x);
 
@@ -401,8 +401,8 @@ void Robot::move_up()
 void Robot::move_down()
 {
 	body = Vector2Add(body, direction_down);
-	int new_x = body.x;
-	int new_y = body.y;
+	int new_x = static_cast<int>(body.x);
+	int new_y = static_cast<int>(body.y);
 
 	IDType cellType = map->getXY(new_y, new_x);
 
