@@ -4,60 +4,59 @@
 ***
 
 ## Temat
-Robot sprz¹taj¹cy "Benek"
+Robot sprzÄ…tajÄ…cy "Benek"
 
 ## Cel projektu
-Naszym celem projektu jest stworzenie robota sprz¹taj¹cego, który posiada sterowanie autonomiczne oraz rêczne. Jego zadaniem jest sprz¹tniêcie ca³ego pomieszczenia i ominiêcie przeszkód.
-Po zakoñczeniu sprz¹tania lub wy³adowaniu baterii "Benek" wraca do stacji ³aduj¹cej. 
+Naszym celem projektu jest stworzenie robota sprzÄ…tajÄ…cego, ktÃ³ry posiada sterowanie autonomiczne oraz rÄ™czne. Jego zadaniem jest sprzÄ…tniÄ™cie caÅ‚ego pomieszczenia i ominiÄ™cie przeszkÃ³d.
+Po zakoÅ„czeniu sprzÄ…tania lub wyÅ‚adowaniu baterii "Benek" wraca do stacji Å‚adujÄ…cej. 
 
-## Dzia³anie robota
-Robot ma funckjê odkurzania. Dziêki czujnikom robot omija przeszkody i optymalnie przemieszcza siê po pomieszczeniu. W razie wykrcia przeszkody, robot j¹ omija i kontynuuje swoj¹ pracê.
-W momencie wyczerpania baterii lub przepe³nienia filtra "Benek" wraca na stacjê ³aduj¹c¹, ³aduje siê/opró¿nia filtr i kontynuuje pracê od miejsca w którym j¹ przerwa³.
-Po sprz¹tniêciu ca³ego pokoju robot wraca do stacji ³aduj¹cej.
+## DziaÅ‚anie robota
+Robot ma funckjÄ™ odkurzania. DziÄ™ki czujnikom robot omija przeszkody i optymalnie przemieszcza siÄ™ po pomieszczeniu. W razie wykrcia przeszkody, robot jÄ… omija i kontynuuje swojÄ… pracÄ™.
+W momencie wyczerpania baterii lub przepeÅ‚nienia filtra "Benek" wraca na stacjÄ™ Å‚adujÄ…cÄ…, Å‚aduje siÄ™/oprÃ³Å¼nia filtr i kontynuuje pracÄ™ od miejsca w ktÃ³rym jÄ… przerwaÅ‚.
+Po sprzÄ…tniÄ™ciu caÅ‚ego pokoju robot wraca do stacji Å‚adujÄ…cej.
 
-## Podzia³ klas
+## PodziaÅ‚ klas
 1. Robot
 2. Czujnik 
 3. Bateria
 4. Filtr
 5. Mapa
 6. Przeszkoda
-7. Po³o¿enie
+7. PoÅ‚oÅ¼enie
 
-### 1.Robot (po³o¿enie, bateria, filtr, stan, czujniki)
-Klasa Robot odpowiada za poruszanie siê Benka (zawiera jego obecne po³o¿enie), monitoruje stan baterii i filtra. Jego ruch determinowany jest sygna³ami podawanymi przez czujniki.
+### 1.Robot (poÅ‚oÅ¼enie, bateria, filtr, stan, czujniki)
+Klasa Robot odpowiada za poruszanie siÄ™ Benka (zawiera jego obecne poÅ‚oÅ¼enie), monitoruje stan baterii i filtra. Jego ruch determinowany jest sygnaÅ‚ami podawanymi przez czujniki.
 Atrybut stan zawiera informacje o tym czy robot jest w trybie pracy czy spoczynku.
 
 ### 2.Czujnik 
-Jest to klasa odpowiedzialna za badanie otoczenia Benka i przesy³ania klasie Robot informacji. 
-W tej klasie zastosujemy dziedzczenie, za pomoc¹ którego zainnicujemy rózne rodzaje czujników, np. czujnik po bokach robota - potrzebny do omijania przeszkód; czujnik odleg³oœci - informuje jak daleko Benek mo¿e pojechaæ;
+Jest to klasa odpowiedzialna za badanie otoczenia Benka i przesyÅ‚ania klasie Robot informacji. 
+W tej klasie zastosujemy dziedzczenie, za pomocÄ… ktÃ³rego zainnicujemy rÃ³zne rodzaje czujnikÃ³w, np. czujnik po bokach robota - potrzebny do omijania przeszkÃ³d; czujnik odlegÅ‚oÅ›ci - informuje jak daleko Benek moÅ¼e pojechaÄ‡;
 
-### 3.Bateria (pojemnoœæ)
-W trakcie pracy robota atrybut tej klasy jest stale zmniejszany. Gdy osi¹gnie 10% robot przerywa pracê i wraca do stacji ³aduj¹cej. 
+### 3.Bateria (pojemnoÅ›Ä‡)
+W trakcie pracy robota atrybut tej klasy jest stale zmniejszany. Gdy osiÄ…gnie 10% robot przerywa pracÄ™ i wraca do stacji Å‚adujÄ…cej. 
 
-### 4.Filtr (pojemnoœæ)
-Filtr dzia³a analogicznie do Baterii. Podczas pracy robota jego zape³nieie siê zwiêksza. Kiedy zape³nienie osi¹gnie stan 95%, robot wraca do stacji ³aduj¹cej, gdzie resetuje pojemnoœæ.
-Przez podobieñstwo do baterii rozwa¿ymy dziedziczenie.
+### 4.Filtr (pojemnoÅ›Ä‡)
+Filtr dziaÅ‚a analogicznie do Baterii. Podczas pracy robota jego zapeÅ‚nieie siÄ™ zwiÄ™ksza. Kiedy zapeÅ‚nienie osiÄ…gnie stan 95%, robot wraca do stacji Å‚adujÄ…cej, gdzie resetuje zapeÅ‚nienie.
 
-### 5.Mapa (d³ugoœæ, szerokoœæ, przeszkody, po³o¿enie_stacji)
-Zawiera informacje o wielkoœci terenu do sprz¹tania i po³o¿enia wszystkich przeszkód oraz stacji ³aduj¹cej. Stacja ³aduj¹ca jest obiektem klasy Po³o¿enie.
+### 5.Mapa (dÅ‚ugoÅ›Ä‡, szerokoÅ›Ä‡, przeszkody, poÅ‚oÅ¼enie_stacji)
+Zawiera informacje o wielkoÅ›ci terenu do sprzÄ…tania i poÅ‚oÅ¼enia wszystkich przeszkÃ³d oraz stacji Å‚adujÄ…cej. Stacja Å‚adujÄ…ca jest obiektem klasy PoÅ‚oÅ¼enie.
 
-### 6.Przeszkoda (po³o¿enie, szerokoœæ, d³ugoœæ)
-Jest to klasa przechowuj¹ca po³o¿enie przeszkody oraz ile zajmuje miejsca na mapie.
+### 6.Przeszkoda (poÅ‚oÅ¼enie, szerokoÅ›Ä‡, dÅ‚ugoÅ›Ä‡)
+Jest to klasa przechowujÄ…ca poÅ‚oÅ¼enie przeszkody oraz ile zajmuje miejsca na mapie.
 
-### 7.Po³o¿enie (x, y)
-Klasa zawieraj¹ca 2 atrybuty informuj¹ce o po³o¿eniu danego obiektu. Z tej klasy korzysta wiele innych klas np. robot, przeszkoda. 
+### 7.PoÅ‚oÅ¼enie (x, y)
+Klasa zawierajÄ…ca 2 atrybuty informujÄ…ce o poÅ‚oÅ¼eniu danego obiektu. Z tej klasy korzysta wiele innych klas np. robot, przeszkoda. 
 
-## Podzia³ obowi¹zków
+## PodziaÅ‚ obowiÄ…zkÃ³w
 Piotr - Czujnik
 Klaudia - Mapa
-Julia -  Przeszkoda, Po³o¿enie, Filtr, Bateria
+Julia -  Przeszkoda, PoÅ‚oÅ¼enie, Filtr, Bateria
 Robot - razem
 
-## Docelowe dzia³anie programu
-Na pocz¹tku skupimy siê na poprawnej implmentacji funkcji oraz komunikacji miêdzy klasami. W pocz¹tkowych fazach pracy zajmiemy siê sterowanym rêcznie ruchem robota oraz wykrywaniem przeszkód.
-Natomiast docelowym za³o¿eniem jest wyœwietlanie siê mapy trasy robota, który ma równie¿ tryb automatyczny.
+## Docelowe dziaÅ‚anie programu
+Na poczÄ…tku skupimy siÄ™ na poprawnej implmentacji funkcji oraz komunikacji miÄ™dzy klasami. W poczÄ…tkowych fazach pracy zajmiemy siÄ™ sterowanym rÄ™cznie ruchem robota oraz wykrywaniem przeszkÃ³d.
+Natomiast docelowym zaÅ‚oÅ¼eniem jest wyÅ›wietlanie siÄ™ mapy trasy robota, ktÃ³ry ma rÃ³wnieÅ¼ tryb automatyczny.
 
 ## Autorzy
-Klaudia Niedzia³kowska, Julia Kie³bik, Piotr Koz³owski
+Klaudia NiedziaÅ‚kowska, Julia KieÅ‚bik, Piotr KozÅ‚owski
 
